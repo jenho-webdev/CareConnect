@@ -7,24 +7,24 @@ import RequestToolbar from '../components/RequestToolbar';
 import DateDisplay from '../components/DateDisplay';
 import Footer from '../components/Footer';
 
-const Home = () => {
-    const [loggedIn, setLoggedIn] = useState(false);
-
+const Planner = () => {
     useEffect(() => {
-        document.title = 'CareConnect';
-
-        // TODO: check if user is logged in
+        document.title = 'CareConnect | Planner';
     }, []);
 
     return (
         <div>
-            {loggedIn ? (
-                {/* TODO: signed in version */}
-            ) : (
-                {/* TODO: signed out version */}
-            )}
+            <Navbar />
+            <div>
+                <Filter />
+                <RequestToolbar />
+            </div>
+            <DateDisplay />
+            <main>
+            </main>
+            <Footer />
         </div>
     );
 };
 
-export default Home;
+export default Planner;
