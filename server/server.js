@@ -1,8 +1,10 @@
+// Import models for the time being. Needed for seeding.
+
 // Import express module.
 const express = require('express')
 // Import path module.
 const path = require ('path')
-// Require connection to MongoDB through Mongoose.
+// Connect to db.
 const db = require('./config/connection')
 // Specify server listening port for production and development.
 const PORT = process.env.PORT || 3001;
