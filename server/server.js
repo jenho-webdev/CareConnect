@@ -10,6 +10,10 @@ const app = express();
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 
+// app.get('/test', (req, res) => {
+//     res.json({ working: true })
+// })
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 })
