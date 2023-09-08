@@ -21,6 +21,12 @@ const typeDefs = gql`
         owner: User
         participants: [User]
     }
+    type Query {
+        getAllUsers: [User]
+        requests: [Request]
+        user(id: ID!): User
+        request(id: ID!): Request
+    }
 `;
 // Export typeDefs
 module.exports = typeDefs;
