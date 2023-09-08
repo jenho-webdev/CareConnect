@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 // Components
 import Navbar from '../components/Navbar';
-import Filter from '../components/Filter';
+import ViewToolbar from '../components/ViewToolbar';
 import RequestToolbar from '../components/RequestToolbar';
 import DateDisplay from '../components/DateDisplay';
 import Footer from '../components/Footer';
@@ -16,7 +16,7 @@ const Planner = () => {
         <div>
             <Navbar />
             <div>
-                <Filter />
+                <ViewToolbar />
                 <RequestToolbar />
             </div>
             <DateDisplay />

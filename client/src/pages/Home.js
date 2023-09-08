@@ -2,9 +2,6 @@ import React, { useEffect } from 'react';
 
 // Components
 import Navbar from '../components/Navbar';
-import Filter from '../components/Filter';
-import RequestToolbar from '../components/RequestToolbar';
-import DateDisplay from '../components/DateDisplay';
 import Footer from '../components/Footer';
 
 const Home = () => {
@@ -19,7 +16,15 @@ const Home = () => {
     return (
         <div>
             {loggedIn ? (
-                {/* TODO: signed in version */}
+                <div>
+                <Navbar />
+                <main>
+                    {/* TODO: Search Form*/}
+                    {/* TODO: Filters */}
+                    {/* TODO: Results */}
+                </main>
+                <Footer />
+            </div>
             ) : (
                 {/* TODO: signed out version */}
             )}
