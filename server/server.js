@@ -2,6 +2,8 @@
 const express = require('express')
 // Import path module.
 const path = require ('path')
+// Require connection to MongoDB through Mongoose.
+const db = require('./config/connection')
 // Specify server listening port for production and development.
 const PORT = process.env.PORT || 3001;
 // Initialize a new instance of the Express application.
@@ -14,6 +16,11 @@ app.use(express.json());
 //     res.json({ working: true })
 // })
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+// Open connection to db.
+db.once('open', () => {
+    console.log('Connection to db successful')
+    // Start server.
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    }) 
 })
