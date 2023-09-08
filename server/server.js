@@ -1,5 +1,7 @@
-// Import models for the time being. Needed for seeding.
-
+// Import Apollo server modules.
+const { ApolloServer } = require('apollo-server-express')
+// Import typeDefs and resolvers.
+// const { typeDefs, resolvers } = require('./schemas')
 // Import express module.
 const express = require('express')
 // Import path module.
@@ -10,13 +12,17 @@ const db = require('./config/connection')
 const PORT = process.env.PORT || 3001;
 // Initialize a new instance of the Express application.
 const app = express();
+
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+})
 // Set up parsing middleware
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 
-// app.get('/test', (req, res) => {
-//     res.json({ working: true })
-// })
+// 
+
 
 // Open connection to db.
 db.once('open', () => {
