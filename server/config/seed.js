@@ -1,41 +1,41 @@
-// Connect to db.
 const db = require('./connection');
-// Import models.
 const { User, Request } = require('../models')
-// Open connection to db.
+
 db.once('open', async () => {
-    // Delete all User documents.
-    await User.deleteMany();
-    // Insert users. Assign to variable so that it is accessible when seeding requests.  
-    const users = await User.insertMany([
-        {
-            firstName: "John",
-            lastName: "Doe",
-            email: "john.doe@example.com",
-            password: "johnpassword123",
-            helpCircle: [],
-            requests: [],
-            offers: []
-        },
-        {
-            firstName: "Jane",
-            lastName: "Smith",
-            email: "jane.smith@example.com",
-            password: "janepassword123",
-            helpCircle: [],
-            requests: [],
-            offers: []
-        },
-        {
-            firstName: "Alice",
-            lastName: "Johnson",
-            email: "alice.johnson@example.com",
-            password: "alicepassword123",
-            helpCircle: [],
-            requests: [],
-            offers: []
-        },
-    ]);
+    await User.deleteMany();  
+    // Created user instances instead as the pre hook only works with the save method.
+    const user1 = new User({
+        firstName: "John",
+        lastName: "Doe",
+        email: "john.doe@example.com",
+        password: "johnpassword123",
+        helpCircle: [],
+        requests: [],
+        offers: []
+    });
+    const user2 = new User({
+        firstName: "Jane",
+        lastName: "Smith",
+        email: "jane.smith@example.com",
+        password: "janepassword123",
+        helpCircle: [],
+        requests: [],
+        offers: []
+    });
+    const user3 = new User({
+        firstName: "Alice",
+        lastName: "Johnson",
+        email: "alice.johnson@example.com",
+        password: "alicepassword123",
+        helpCircle: [],
+        requests: [],
+        offers: []
+    });
+
+    // Save users (this will invoke the pre('save') middleware and hash the passwords)
+    await user1.save();
+    await user2.save();
+    await user3.save();
     console.log('Successfully seeded users.');
 
     await Request.deleteMany();
@@ -47,7 +47,7 @@ db.once('open', async () => {
             time: "15:30",
             date: "2023-09-15",
             status: "Open",
-            owner: users[0]._id,
+            owner: user1._id,
             participants: []
         },
         {
@@ -55,10 +55,9 @@ db.once('open', async () => {
             type: "Meals",
             time: "12:00",
             date: "2023-09-16",
-            status: "Closed",
-            // Access users variable to assign owners and participants. 
-            owner: users[1]._id, 
-            participants: [users[0]._id, users[2]._id]
+            status: "Closed", 
+            owner: user2._id, 
+            participants: [user1._id, user3._id]
         },
         {
             location: "789 Pine Place, Capital City",
@@ -66,11 +65,11 @@ db.once('open', async () => {
             time: "10:00",
             date: "2023-09-17",
             status: "Open",
-            owner: users[2]._id, 
+            owner: user3._id, 
             participants: []
         },
     ])
     console.log('Successfully seeded requests.');
-    // Exit seeding.
+
     process.exit();
 })

@@ -1,6 +1,5 @@
-// Require Apollo Express to make typeDefs.
 const { gql } = require('apollo-server-express') 
-// Define typeDefs.
+
 const typeDefs = gql`
     type User{
         _id: ID!
@@ -28,6 +27,6 @@ const typeDefs = gql`
         request(id: ID!): Request
     }
 `;
-// Export typeDefs
+
 module.exports = typeDefs;
 
