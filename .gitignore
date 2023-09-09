@@ -6,3 +6,4 @@ package-lock.json
 .init.sql
 dist
 build
+/.vscode
