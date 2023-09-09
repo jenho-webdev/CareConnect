@@ -17,12 +17,12 @@ const typeDefs = gql`
         time: String!
         date: String!
         status: String!
-        owner: User
+        owner: User!
         participants: [User]
     }
     type Query {
         getAllUsers: [User]
-        requests: [Request]
+        getAllRequests: [Request]
         user(id: ID!): User
         request(id: ID!): Request
     }
