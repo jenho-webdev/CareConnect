@@ -1,5 +1,6 @@
 const { gql } = require('apollo-server-express') 
 
+// signUp resolver returns an object with two properties (token and newUser). This returns an object that aligns with the Auth type definition. Useful for returning both the token and the user. 
 const typeDefs = gql`
     type User{
         _id: ID!
@@ -10,6 +11,7 @@ const typeDefs = gql`
         requests: [Request]
         offers: [Request]
     }
+
     type Request{
         _id: ID!
         location: String!
@@ -20,11 +22,19 @@ const typeDefs = gql`
         owner: User!
         participants: [User]
     }
+
     type Query {
         getAllUsers: [User]
         getAllRequests: [Request]
-        user(id: ID!): User
-        request(id: ID!): Request
+    }
+
+    type Mutation {
+        signUp(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+    }
+
+    type Auth {
+        token: String!
+        newUser: User!
     }
 `;
 
