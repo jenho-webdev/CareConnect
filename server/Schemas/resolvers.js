@@ -20,23 +20,40 @@ const resolvers = {
             return { token, newUser};
         },
         login: async (_, { email, password }) => {
-            // Find user with details from request.
             const foundUser = await User.findOne({ email });
 
             if(!foundUser) {
                 throw new AuthenticationError('User not found.')
             }
-            // Mongoose method will check if password passed in matches. Needs to be defined in User model.
+
             const checkPassword = await foundUser.isPasswordCorrect(password);
 
             if (!checkPassword) {
                 throw new AuthenticationError('Wrong password.');
             }
 
-            // Generate JWT for the found user using signToken method from auth.js.
-            const token = signToken(foundUser);
-            // Return the token and all the found user's details to front end for storage. Sort info wanted on front end mutation.  
+            const token = signToken(foundUser); 
+
             return { token, foundUser };
+        },
+        deleteRequest: async (_, { requestId }, context) => {
+            // Use context (authMiddleWare to verify if user is authenticated.)
+            if (context.user) {
+                // Delete the request tied to the provided ID (By front-end) AND authored by the authenticated user.
+                const deletedRequest = await Request.findOneAndDelete({
+                    _id: requestId,
+                    requestAuthor: context.user.email,
+                });
+                // update the user's list of requests to remove the deleted request.
+                await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { requests: deletedRequest._id } }
+                );
+                // Return the details of the deleted request in the case that the front-end needs them.
+                return deletedRequest;
+            }
+            // If no user is authenticated, throw an error.
+            throw new AuthenticationError('Unauthorized request.');
         }
     }
 }
