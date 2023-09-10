@@ -36,18 +36,19 @@ const userSchema = new Schema({
     }
 })
 
-// Set up mongoose hooks to hash passwords using bcrypt. Need to pass next as it is a middleware in User creation.
 userSchema.pre('save', async function(next) {
-    // Mongoose properties check if User document is new or if the password field has been changed since the lat time it was stored. 
     // || this.isModified('password') needed if rest password feature added
     if (this.isNew || this.isModified('password')) {
         const saltRounds = 10;
-        // Change the password value using bcrypt. Bcrypt itself will take the password provided and do 10 rounds of hashing.
         this.password = await bcrypt.hash(this.password, saltRounds);
     }
 
     next();
 })
+
+userSchema.methods.isPasswordCorrect = async function (password) {
+    return bcrypt.compare(password, this.password);
+};
 
 const User = mongoose.model('User', userSchema);
 
