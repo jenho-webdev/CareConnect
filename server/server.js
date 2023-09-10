@@ -3,13 +3,16 @@ const { typeDefs, resolvers } = require('./Schemas')
 const express = require('express')
 const path = require ('path')
 const db = require('./config/connection')
+// authMiddleWare needed to provide context to endpoints that require authorization.  
+const { authMiddleware } = require('./utils/auth');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-
+// Context allows for all endpoints with context to verify users and have access to user data extracted from token by jwt.verify. 
 const server = new ApolloServer({
     typeDefs,
     resolvers,
+    context: authMiddleware, 
 })
 
 app.use(express.urlencoded({ extended: false}));

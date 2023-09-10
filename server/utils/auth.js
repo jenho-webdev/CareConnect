@@ -1,23 +1,40 @@
-// Import required packages for signing token and using env variables.
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-// Get JWT secret from environment variables.
 const secret = process.env.JWT_SECRET;
-// Set token expiration time
 const expiration = '1h';
 
-// Throw error if in production and the JWT secret isn't set.
 if (process.env.NODE_ENV === 'production' && !secret) {
     throw new Error("JWT_SECRET is not set.");
 }
 
 module.exports = {
-    // Method to sign a JWT token
   signToken: function ({ email, firstName, lastName, _id }) {
-    // Define payload for the JWT token.
     const payload = { email, firstName, lastName, _id };
-    // Return the signed JWT token using sign method from jsonwebtoken. Takes payload, secret, and expiration. 
+
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
+  authMiddleware: function ({req}) {
+    // Extract token from request. Determine on front-end how token will be sent  
+    let token = req.body.token || req.query.token || req.headers.authorization;
+    // If using request headers, modify token to correct format.
+    if (req.headers.authorization) {
+        token = token.split(' ').pop().trim();
+    }
+
+    if (!token) {
+        return req;
+    }
+
+    try {
+    // jwt method verifies and decodes token and stores it in data.
+    const { data } = jwt.verify(token, secret, { maxAge: expiration });
+    // Attach decoded data (payload) to request so that handlers have access to data. For example, adding a request can make use of this method through context and both approve a user adding a request and can use { data } to assign a user _id to the request.
+    req.user = data;
+    } catch {
+    console.log('Invalid token');
+    }
+
+    return req;
+  }
 };
