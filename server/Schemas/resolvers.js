@@ -1,5 +1,5 @@
+const { AuthenticationError } = require('apollo-server-express');
 const { User, Request } = require('../models');
-// Import the necessary method for signing token.
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -7,8 +7,7 @@ const resolvers = {
         getAllUsers: async () => { 
             return await User.find().populate('helpCircle requests offers');
         },
-        getAllRequests: async () => { 
-            // Need to populate. Documents are not making use of subdocuments, _id's are being used to reference other documents. 
+        getAllRequests: async () => {  
             return await Request.find().populate('owner participants');
         },
     },
@@ -16,12 +15,28 @@ const resolvers = {
     Mutation: {
         
         signUp: async (_, { firstName, lastName, email, password }) => {
-            // Create a new user with details from request.
             const newUser = await User.create({ firstName, lastName, email, password });
-            // Generate JWT for the new user using signToken method from auth.js.
             const token = signToken(newUser);
-            // Return the token and all the new user's details to front end for storage. Sort info wanted on front end mutation.  
             return { token, newUser};
+        },
+        login: async (_, { email, password }) => {
+            // Find user with details from request.
+            const foundUser = await User.findOne({ email });
+
+            if(!foundUser) {
+                throw new AuthenticationError('User not found.')
+            }
+            // Mongoose method will check if password passed in matches. Needs to be defined in User model.
+            const checkPassword = await foundUser.isPasswordCorrect(password);
+
+            if (!checkPassword) {
+                throw new AuthenticationError('Wrong password.');
+            }
+
+            // Generate JWT for the found user using signToken method from auth.js.
+            const token = signToken(foundUser);
+            // Return the token and all the found user's details to front end for storage. Sort info wanted on front end mutation.  
+            return { token, foundUser };
         }
     }
 }
