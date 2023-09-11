@@ -1,8 +1,14 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
+
+
 
 export default function LoginForm() {
   const [formData, setFormData] = useState({ username: "", password: "" });
-
+ const [login, { error, data }] = useMutation(LOGIN_USER);
   //handle input field changes
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -10,9 +16,24 @@ export default function LoginForm() {
   };
 
   //handle form submit
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-     //handle form submit login goes here
+    console.log(formData);
+    try {
+      const { data } = await login({
+        variables: { ...formData },
+      });
+
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setFormData({
+      email: '',
+      password: '',
+    });
 
   };
 
