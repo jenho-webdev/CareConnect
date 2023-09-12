@@ -4,11 +4,9 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
-
-
 export default function LoginForm() {
   const [formData, setFormData] = useState({ username: "", password: "" });
- const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [login, { error, data }] = useMutation(LOGIN_USER);
   //handle input field changes
   const handleChange = (event) => {
     const { name, value } = event.target;
