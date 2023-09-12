@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from 'react';
+
+// Components
 import LoginFrom from "../components/LoginForm";
-// 1. import `NextUI/Image` component
+
+// NextUI components
 import { Image } from "@nextui-org/react";
 
 const Login = () => {
+  useEffect(() => {
+    document.title = 'CareConnect | Login';
+  }, []);
+
   return (
     <div className="flex h-screen">
       {/* Left Column */}
