@@ -1,9 +1,47 @@
-nodgit e_modules
-.DS_Store
-.dccache
-package-lock.json
-.env
-.init.sql
-dist
-build
-/.vscode
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Ignore files and directories for the client-side
+
+# dependencies
+/client/node_modules/
+
+# production
+/client/build/
+/client/temp_data/
+
+# env
+/client/.env
+/client/.env.local
+
+
+# personal config
+/client/.idea/
+/client/.vscode/
+
+/client/npm-debug.log*
+/client/yarn-debug.log*
+/client/yarn-error.log*
+/client/*.log
+/client/*.log.*
+/client/logs/
+/client/temp
+
+# Dependency Management Configuration
+/client/.npmrc
+/client/.yarnrc
+
+#IDE/Editor Configuration Files:
+/client/.editorconfig
+/client/.eslintrc
+/client/.prettierrc
+
+
+# Ignore files and directories for the server-side
+
+/server/node_modules/
+/server/build/
+/server/.env
+
+
+# misc
+/server/.DS_Store

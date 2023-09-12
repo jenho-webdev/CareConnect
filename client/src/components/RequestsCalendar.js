@@ -1,25 +1,29 @@
-import { Calendar, momentLocalizer } from 'react-big-calendar';
-import moment from 'moment';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-
-export default function RequestsCalendar() 
-{
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import "../App.css";
+export default function RequestsCalendar() {
   const localizer = momentLocalizer(moment);
 
+  const now = new Date();
   const events = [
     {
-      title: 'Event 1',
-      start: new Date(2023, 0, 1),
-      end: new Date(2023, 0, 2),
+      id: 15,
+      title: "Point in Time Event",
+      start: now,
+      end: now,
     },
-    // Add more events here
+    //add more events here to test
   ];
 
   return (
     <div>
       <Calendar
         localizer={localizer}
+        defaultDate={new Date()}
+        defaultView="month"
         events={events}
+        style={{ height: "50vh", width: "w-0.5" }}
         startAccessor="start"
         endAccessor="end"
       />
