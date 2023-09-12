@@ -1,47 +1,46 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Ignore files and directories for the client-side
+# Ignore files and directories for the both server and client-sides
 
 # dependencies
-/client/node_modules/
+/*/node_modules/
+node_modules
 
 # production
-/client/build/
-/client/temp_data/
+/*/build/
+build
+/*/temp_data/
+temp_data
 
 # env
-/client/.env
-/client/.env.local
-
+/*/.env
+/*/.env.*
+.env
+.env.local
 
 # personal config
-/client/.idea/
-/client/.vscode/
+.idea
+.vscode
 
-/client/npm-debug.log*
-/client/yarn-debug.log*
-/client/yarn-error.log*
-/client/*.log
-/client/*.log.*
-/client/logs/
-/client/temp
+/*/npm-debug.log*
+/*/yarn-debug.log*
+/*/yarn-error.log*
+/*/*.log
+/*/*.log.*
+/*/logs/
+/*/temp
+temp
+logs
 
 # Dependency Management Configuration
-/client/.npmrc
-/client/.yarnrc
+/*/.npmrc
+.npmrc
+/*/.yarnrc
+.yarnrc
 
 #IDE/Editor Configuration Files:
-/client/.editorconfig
-/client/.eslintrc
-/client/.prettierrc
+/*/.editorconfig
+/*/.eslintrc
+/*/.prettierrc
 
 
-# Ignore files and directories for the server-side
-
-/server/node_modules/
-/server/build/
-/server/.env
-
-
-# misc
-/server/.DS_Store
