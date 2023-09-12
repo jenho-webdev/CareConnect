@@ -51,28 +51,34 @@ db.once('open', async () => {
 
     const requests = await Request.insertMany([
         {
+            requestTitle: "Ride to Appointment",
+            requestText: "lsidfgb vsieru bvseirubvs eirub vsirb",
             location: "123 Elm Street, Springfield",
             type: "Ride",
-            time: "15:30",
-            date: "2023-09-15",
+            startTime: "2023-09-15T15:30:00",
+            endTime: "2023-09-15T16:30:00",
             status: "Open",
             owner: user1._id,
             participants: [user2._id]
         },
         {
+            requestTitle: "Help cooking",
+            requestText: "dfrgtrst dfghhdfgny sdgvdf dsg df",
             location: "456 Oak Avenue, Shelbyville",
             type: "Meals",
-            time: "12:00",
-            date: "2023-09-16",
+            startTime: "2023-09-16T12:00:00",
+            endTime: "2023-09-16T13:00:00",
             status: "Closed", 
             owner: user2._id, 
             participants: [user1._id, user3._id]
         },
         {
+            requestTitle: "Help Logging In",
+            requestText: "erg sertgrhbeth sd dfhsrthr serkjgbse",
             location: "789 Pine Place, Capital City",
             type: "Elderly Tech Support",
-            time: "10:00",
-            date: "2023-09-17",
+            startTime: "2023-09-17T10:00:00",
+            endTime: "2023-09-17T11:00:00",
             status: "Open",
             owner: user3._id, 
             participants: [user1._id]

@@ -24,8 +24,8 @@ export const QUERY_USER_INFO = gql`
         _id
         location
         type
-        time
-        date
+        startTime
+        endTime
         status
         participants {
           _id
@@ -37,8 +37,8 @@ export const QUERY_USER_INFO = gql`
         _id
         location
         type
-        time
-        date
+        startTime
+        endTime
         status
         owner {
           _id
@@ -56,31 +56,44 @@ export const QUERY_USER_INFO = gql`
 `;
 
 export const QUERY_REQUESTS = gql`
-  query getRequests {
-    requests {
+  query getAllRequests {
+    getAllRequests {
       _id
+      requestTitle
       requestText
-      requestAuthor
+      owner
       createdAt
+      location
+      type
+      startTime
+      endTime
+      status
+      participants
     }
   }
 `;
+
 export const QUERY_SINGLE_REQUEST = gql`
   query getSingleRequest($requestId: ID!) {
     request(requestId: $requestId) {
       _id
+      requestTitle
       requestText
-      requestAuthor
-      createdAt
-      comments {
+      startTime
+      endTime
+      location
+      type
+      status
+      owner
+      participants {
         _id
-        commentText
-        commentAuthor
-        createdAt
+        firstName
+        lastName
       }
     }
   }
 `;
+
 export const QUERY_ME = gql`
   query me {
     me {
