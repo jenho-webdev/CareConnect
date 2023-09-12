@@ -1,4 +1,6 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 //import React and Apollo dependencies
 import {
   ApolloClient,
@@ -7,22 +9,24 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
-
-// import CSS libraries/components/.css files
+// CSS libraries/components/.css files
 import { NextUIProvider} from "@nextui-org/react";
 import "./App.css";
 
-//import pages
-// import Home from './pages/Home';  //where all requests within logged in user will be displayed in either a list or map view
-// import Signup from './pages/Signup';   //where the user will be able to signup
+// Pages
+import Home from './pages/Home';  //where all requests within logged in user will be displayed in either a list or map view
+import Signup from './pages/Signup';   //where the user will be able to signup
 import Login from './pages/Login'; //where the user will be able to login
-// import SingleRequest from './pages/SingleRequest'; //where a single request will be displayed
-// import Profile from './pages/Profile'; //where all user's own request will be displayed and where see it in either a list or in calendar view
-// import Header from './components/Header'; //where the site navbar will show up in all pages
-// import Footer from './components/Footer'; //where the site footer a long with links/credits will show up in all pages
+import Dashboard from './pages/Dashboard'; //where the user will be able to see all requests in a list view
+import Request from './pages/Request'; //where a single request will be displayed
+import Profile from './pages/Profile'; //where all user's own request will be displayed and where see it in either a list or in calendar view
+import NotFound from './pages/NotFound'; //where the user will be redirected to if they try to access a page that does not exist
+
+// Components
+import Header from './components/Header'; //where the site navbar will show up in all pages
+import Footer from './components/Footer'; //where the site footer a long with links/credits will show up in all pages
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -55,37 +59,40 @@ function App() {
       <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          {/* <Header /> */}
+          <Header />
           <div className="container">
             <Routes>
-              {/* <Route 
+              <Route
                 path="/"
                 element={<Home />}
-              /> */}
+              />
               <Route 
-
-                path="/"
+                path="/login"
                 element={<Login />}
               />
-              {/* <Route 
+              <Route 
                 path="/signup"
                 element={<Signup />}
               />
               <Route 
-                path="/me"
+                path="/dashboard"
+                element={<Dashboard />}
+              />
+              <Route 
+                path="/request/:requestId"
+                element={<Request />} 
+              />
+              <Route
+                path="/user/:username"
                 element={<Profile />}
               />
               <Route 
-                path="/profiles/:username"
-                element={<Profile />}
+                path="*"
+                element={<NotFound />}
               />
-              <Route 
-                path="/thoughts/:thoughtId"
-                element={<SingleRequest />} 
-              />*/}
             </Routes>
           </div>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </Router>
     </ApolloProvider>

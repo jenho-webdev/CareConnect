@@ -1,4 +1,4 @@
-node_modules
+nodgit e_modules
 .DS_Store
 .dccache
 package-lock.json
@@ -7,3 +7,4 @@ package-lock.json
 dist
 build
 /.vscode
+node_modules
