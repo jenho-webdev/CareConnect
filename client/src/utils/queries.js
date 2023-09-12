@@ -1,21 +1,61 @@
 import { gql } from "@apollo/client";
 
-export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
+export const QUERY_USERS = gql`
+  query getUsersByName($firstName: String!, $lastName: String!) {
+    getUsersByName(firstName: $firstName, lastName: $lastName) {
       _id
-      username
-      email
+      firstName
+      lastName
+    }
+  }
+`;
+
+export const QUERY_USER_INFO = gql`
+  query getUserById($_id: ID!) {
+    getUserById(_id: $_id) {
+      firstName
+      lastName
+      helpCircle {
+        _id
+        firstName
+        lastName
+      } 
       requests {
         _id
-        requestText
-        createdAt
+        location
+        type
+        time
+        date
+        status
+        participants {
+          _id
+          firstName
+          lastName
+        }
+      }
+      offers {
+        _id
+        location
+        type
+        time
+        date
+        status
+        owner {
+          _id
+          firstName
+          lastName
+        }
+        participants {
+          _id
+          firstName
+          lastName
+        }
       }
     }
   }
 `;
 
-export const QUERY_RQUESTS = gql`
+export const QUERY_REQUESTS = gql`
   query getRequests {
     requests {
       _id
