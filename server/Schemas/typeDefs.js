@@ -29,14 +29,37 @@ const typeDefs = gql`
     type Query {
         getAllUsers: [User]
         getAllRequests: [Request]
-        getUsersByName(firstName: String!, lastName: String!): [User]
-        getUserById(_id: ID!): User
+        getUsersByName(
+            firstName: String!, 
+            lastName: String!
+        ): [User]
+        getUserById(
+            _id: ID!
+        ): User
     }
 
     type Mutation {
-        signUp(firstName: String!, lastName: String!, email: String!, password: String!): AuthSignUp
-        login(email: String!, password: String!): AuthLogin
-        deleteRequest(requestId: ID!): Request
+        signUp(
+            firstName: String!, 
+            lastName: String!, 
+            email: String!, 
+            password: String!
+        ): AuthSignUp
+        login(
+            email: String!, 
+            password: String!
+        ): AuthLogin
+        deleteRequest(
+            requestId: ID!
+        ): Request
+        createRequest(
+            requestTitle: String!, 
+            location: String!, 
+            type: String!, 
+            startTime: String!, 
+            endTime: String!, 
+            requestText: String!
+        ): Request
     }
 
     type AuthSignUp {
