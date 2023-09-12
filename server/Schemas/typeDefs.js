@@ -12,20 +12,25 @@ const typeDefs = gql`
         offers: [Request]
     }
 
-    type Request{
+    type Request {
         _id: ID!
+        requestTitle: String!
+        requestText: String!
+        owner: User!
         location: String!
         type: String!
-        time: String!
-        date: String!
+        startTime: String!
+        endTime: String!  
+        createdAt: String!
         status: String!
-        owner: User!
         participants: [User]
     }
 
     type Query {
         getAllUsers: [User]
         getAllRequests: [Request]
+        getUsersByName(firstName: String!, lastName: String!): [User]
+        getUserById(_id: ID!): User
     }
 
     type Mutation {

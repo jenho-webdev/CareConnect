@@ -7,6 +7,29 @@ const resolvers = {
         getAllUsers: async () => { 
             return await User.find().populate('helpCircle requests offers');
         },
+        // Get one users based on first and last name.
+        getUsersByName: async (_, { firstName, lastName }) => {
+            return User.find({ firstName, lastName }).populate('helpCircle requests offers');
+        },
+        // Get one user based on _id.
+        getUserById: async (_, { _id }) => {
+            return User.findOne({ _id })
+                .populate('helpCircle', '_id firstName lastName')
+                .populate({
+                    path: 'requests',
+                    populate: {
+                        path: 'owner participants',
+                        select: '_id firstName lastName'
+                    }
+                })
+                .populate({
+                    path: 'offers',
+                    populate: {
+                        path: 'owner participants',
+                        select: '_id firstName lastName'
+                    }
+                });
+        },
         getAllRequests: async () => {  
             return await Request.find().populate('owner participants');
         },
