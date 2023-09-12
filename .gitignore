@@ -1,4 +1,5 @@
 nodgit e_modules
+node_modules
 .DS_Store
 .dccache
 package-lock.json
