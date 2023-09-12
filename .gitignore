@@ -1,0 +1,9 @@
+node_modules
+.DS_Store
+.dccache
+package-lock.json
+.env
+.init.sql
+dist
+build
+/.vscode
