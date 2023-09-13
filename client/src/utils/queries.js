@@ -103,13 +103,29 @@ export const QUERY_ME = gql`
   query me {
     me {
       _id
-      username
+      firstName
+      lastName
       email
+      helpCircle {
+        _id
+        firstName
+        lastName
+      } 
       requests {
         _id
-        requestText
-        requestAuthor
-        createdAt
+        location
+        type
+        startTime
+        endTime
+        status
+      }
+      offers {
+        _id
+        location
+        type
+        startTime
+        endTime
+        status
       }
     }
   }

@@ -39,6 +39,7 @@ const typeDefs = gql`
         getRequestById(
             requestId: ID!
         ): Request
+        me: User
     }
 
     type Mutation {

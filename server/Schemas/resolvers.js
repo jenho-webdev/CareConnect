@@ -36,6 +36,12 @@ const resolvers = {
         getAllRequests: async () => {  
             return await Request.find().populate('owner participants');
         },
+        me: async (_, args, context) => {
+            if (context.user) {
+                return User.findOne({ _id: context.user._id }).populate('helpCircle requests offers');
+              }
+              throw new AuthenticationError('User not found.')
+        }
     },
 
     Mutation: {
@@ -49,7 +55,7 @@ const resolvers = {
             const foundUser = await User.findOne({ email });
 
             if(!foundUser) {
-                throw new AuthenticationError('User not found.')
+                throw new AuthenticationError('User not found.');
             }
 
             const checkPassword = await foundUser.isPasswordCorrect(password);
