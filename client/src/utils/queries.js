@@ -74,8 +74,8 @@ export const QUERY_REQUESTS = gql`
 `;
 
 export const QUERY_SINGLE_REQUEST = gql`
-  query getSingleRequest($requestId: ID!) {
-    request(requestId: $requestId) {
+  query getRequestById($requestId: ID!) {
+    getRequestById(requestId: $requestId) {
       _id
       requestTitle
       requestText
@@ -84,7 +84,12 @@ export const QUERY_SINGLE_REQUEST = gql`
       location
       type
       status
-      owner
+      createdAt
+      owner {
+        _id
+        firstName
+        lastName
+      }
       participants {
         _id
         firstName

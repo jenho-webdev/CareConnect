@@ -28,6 +28,11 @@ const resolvers = {
                     }
                 });
         },
+        getRequestById: async (_, { requestId }) => {
+            return Request.findOne({ _id: requestId })
+                .populate('owner', '_id firstName lastName')
+                .populate('participants', '_id firstName lastName');
+        },
         getAllRequests: async () => {  
             return await Request.find().populate('owner participants');
         },
