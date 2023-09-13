@@ -2,46 +2,39 @@
 
 # Ignore files and directories for the both server and client-sides
 
+# Client Side Front-End Development Tools
+/client/src/stories
+/client/.storybook  
+
 # dependencies
-/*/node_modules/
-node_modules
-package-lock.json
+**/node_modules
+**/package-lock.json
+
 
 # production
-/*/build/
-build
-/*/temp_data/
-temp_data
+**/build
+**/temp_data
 
 # env
-/*/.env
-/*/.env.*
-.env
-.env.local
+
+**/.env*
+!/**/.env*.example
 
 # personal config
 .idea
 .vscode
+**/*.log*
+**/logs
+**/temp
 
-/*/npm-debug.log*
-/*/yarn-debug.log*
-/*/yarn-error.log*
-/*/*.log
-/*/*.log.*
-/*/logs/
-/*/temp
-temp
-logs
 
 # Dependency Management Configuration
-/*/.npmrc
-.npmrc
-/*/.yarnrc
-.yarnrc
+**/.npmrc
+**/.yarnrc
 
 #IDE/Editor Configuration Files:
-/*/.editorconfig
-/*/.eslintrc
-/*/.prettierrc
+**/.editorconfig
+**/.eslintrc
+**/.prettierrc
 
 
