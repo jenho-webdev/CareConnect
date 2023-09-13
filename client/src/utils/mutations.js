@@ -24,32 +24,23 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_request = gql`
-  mutation addRequest($requestText: String!) {
-    addRequest(requestText: $requestText) {
+export const ADD_REQUEST = gql`
+  mutation createRequest($requestTitle: String!, $location: String!, $type: String!, $startTime: String!, $endTime: String!, $requestText: String!) {
+    createRequest(requestTitle: $requestTitle, location: $location, type: $type, startTime: $startTime, endTime: $endTime, requestText: $requestText) {
       _id
-      requestText
-      requestAuthor
+      requestTitle
+      location
+      type
       createdAt
-      comments {
+      startTime
+      endTime
+      status
+      requestText
+      owner {
         _id
-        commentText
       }
-    }
-  }
-`;
-
-export const ADD_COMMENT = gql`
-  mutation addComment($requestId: ID!, $commentText: String!) {
-    addComment(requestId: $requestId, commentText: $commentText) {
-      _id
-      requestText
-      requestAuthor
-      createdAt
-      comments {
+      participants {
         _id
-        commentText
-        createdAt
       }
     }
   }

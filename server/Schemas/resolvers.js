@@ -7,11 +7,9 @@ const resolvers = {
         getAllUsers: async () => { 
             return await User.find().populate('helpCircle requests offers');
         },
-        // Get one users based on first and last name.
         getUsersByName: async (_, { firstName, lastName }) => {
             return User.find({ firstName, lastName }).populate('helpCircle requests offers');
         },
-        // Get one user based on _id.
         getUserById: async (_, { _id }) => {
             return User.findOne({ _id })
                 .populate('helpCircle', '_id firstName lastName')
@@ -30,9 +28,20 @@ const resolvers = {
                     }
                 });
         },
+        getRequestById: async (_, { requestId }) => {
+            return Request.findOne({ _id: requestId })
+                .populate('owner', '_id firstName lastName')
+                .populate('participants', '_id firstName lastName');
+        },
         getAllRequests: async () => {  
             return await Request.find().populate('owner participants');
         },
+        me: async (_, args, context) => {
+            if (context.user) {
+                return User.findOne({ _id: context.user._id }).populate('helpCircle requests offers');
+              }
+              throw new AuthenticationError('User not found.')
+        }
     },
 
     Mutation: {
@@ -46,7 +55,7 @@ const resolvers = {
             const foundUser = await User.findOne({ email });
 
             if(!foundUser) {
-                throw new AuthenticationError('User not found.')
+                throw new AuthenticationError('User not found.');
             }
 
             const checkPassword = await foundUser.isPasswordCorrect(password);
@@ -60,22 +69,39 @@ const resolvers = {
             return { token, foundUser };
         },
         deleteRequest: async (_, { requestId }, context) => {
-            // Use context (authMiddleWare to verify if user is authenticated.)
             if (context.user) {
-                // Delete the request tied to the provided ID (By front-end) AND authored by the authenticated user.
                 const deletedRequest = await Request.findOneAndDelete({
                     _id: requestId,
                     requestAuthor: context.user.email,
                 });
-                // update the user's list of requests to remove the deleted request.
+
                 await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $pull: { requests: deletedRequest._id } }
                 );
-                // Return the details of the deleted request in the case that the front-end needs them.
                 return deletedRequest;
             }
-            // If no user is authenticated, throw an error.
+            throw new AuthenticationError('Unauthorized request.');
+        },
+        createRequest: async (_, { requestTitle, location, type, startTime, endTime, requestText }, context) => {
+            if (context.user) {
+                const createRequest = await Request.create({
+                    requestTitle,
+                    location,
+                    type,
+                    startTime,
+                    endTime,
+                    status: "available",
+                    requestText,
+                    owner: context.user._id
+                });
+
+                await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { requests: createRequest._id } }
+                );
+                return createRequest;
+            }
             throw new AuthenticationError('Unauthorized request.');
         }
     }
