@@ -38,11 +38,11 @@ export default function LoginForm() {
   return (
     <div className="py-12">
       <form onSubmit={handleSubmit}>
-        <h2 className="text-2xl font-bold">Sign-In</h2>
+        <h2 className="text-2xl font-bold text-black">Sign-In</h2>
         <div className="mt-8 max-w-md mx-auto">
           <div className="space-y-4">
             <div>
-              <label htmlFor="username" className="text-gray-700 block">
+              <label htmlFor="username" className="text-black">
                 Username
               </label>
               <input
@@ -51,7 +51,7 @@ export default function LoginForm() {
                 name="username"
                 value={formData.username}
                 onChange={handleChange}
-                className="mt-1 px-2 py-1 w-full border border-gray-300 rounded focus:outline-none focus:border-black"
+                className="mt-1 px-2 py-1 w-full border border-gray-300 rounded focus:outline-none focus:border-blue"
               />
             </div>
             <div>
@@ -64,11 +64,19 @@ export default function LoginForm() {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="mt-1 px-2 py-1 w-full border border-gray-300 rounded focus:outline-none focus:border-black"
+                className="mt-1 px-2 py-1 w-full border border-gray-300 rounded focus:outline-none focus:border-blue"
               />
+              <div className="mt-4 flex-center-x">
+                <Link
+                  to="/forgotpassword"
+                  className="text-black font-semibold underline text-sm"
+                >
+                  Forgot Password?
+                </Link>
+              </div>
             </div>
           </div>
-          <div className="mt-4">
+          <div className="mt-4 flex-center-x">
             <button
               type="submit"
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600"

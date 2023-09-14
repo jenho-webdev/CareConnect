@@ -10,7 +10,6 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-
 // CSS libraries/components/.css files
 import { NextUIProvider} from "@nextui-org/react";
 import "./App.css";
@@ -19,10 +18,14 @@ import "./App.css";
 import Home from './pages/Home';  //where all requests within logged in user will be displayed in either a list or map view
 import Signup from './pages/Signup';   //where the user will be able to signup
 import Login from './pages/Login'; //where the user will be able to login
+import ForgotPassword from "./pages/ForgotPassword";
 import Dashboard from './pages/Dashboard'; //where the user will be able to see all requests in a list view
 import Request from './pages/Request'; //where a single request will be displayed
 import Profile from './pages/Profile'; //where all user's own request will be displayed and where see it in either a list or in calendar view
 import NotFound from './pages/NotFound'; //where the user will be redirected to if they try to access a page that does not exist
+
+// Styles
+import './styles/main.sass'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -68,6 +71,10 @@ function App() {
               <Route 
                 path="/signup"
                 element={<Signup />}
+              />
+              <Route
+                path="forgot-password"
+                element={<ForgotPassword />}
               />
               <Route 
                 path="/dashboard"

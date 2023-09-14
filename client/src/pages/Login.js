@@ -12,24 +12,15 @@ const Login = () => {
   }, []);
 
   return (
-    <div className="flex h-screen">
+    <div className="fullscreen flex-center-x">
       {/* Left Column */}
-      <div className="flex-1 bg-gray-200">
-        <div className="h-full flex items-center justify-center">
-          <div className="max-w-md p-8 space-y-4 bg-white">
-            {/* Logo */}
-            <div className="flex items-center justify-center">
-              <Image src="/logo500.png" alt="Logo" />
-            </div>
-          </div>
-        </div>
+      <div className="width-50 flex-center-xy bg-white">
+        <Image src="/logo500.png" className="login-logo" alt="Logo" />
       </div>
 
       {/* Right Column */}
-      <div className="flex-1 bg-teal-400">
-        <div className="h-full flex items-center justify-center">
-          <LoginFrom />
-        </div>
+      <div className="width-50 flex-center-xy bg-teal-light">
+        <LoginFrom />
       </div>
     </div>
   );
