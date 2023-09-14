@@ -16,23 +16,22 @@ export default function LoginForm() {
   //handle form submit
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
-    try {
-      const { data } = await login({
-        variables: { ...formData },
-      });
 
-      Auth.login(data.login.token);
+    try {
+      const mutationRes = await login({
+        variables: { email: formData.email, password: formData.password },
+      });
+      const token = mutationRes.data.login.token;
+      Auth.login(token);
     } catch (e) {
       console.error(e);
     }
 
     // clear form values
     setFormData({
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     });
-
   };
 
   return (
@@ -76,6 +75,7 @@ export default function LoginForm() {
               Submit
             </button>
           </div>
+          <Link to="/signup">← Create a account</Link>
         </div>
       </form>
     </div>
