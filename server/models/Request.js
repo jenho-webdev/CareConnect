@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const requestSchema = new Schema({
+    requestTitle: {
+        type: String,
+        required: true
+    },
     location: {
         type: String,
         required: true
@@ -9,15 +13,19 @@ const requestSchema = new Schema({
         type: String,
         required: true
     },
-    time: {
+    startTime: {
         type: String,
         required: true
     },
-    date: {
+    endTime: {
         type: String,
         required: true
     },
     status: {
+        type: String,
+        required: true
+    },
+    requestText: {
         type: String,
         required: true
     },
@@ -29,7 +37,9 @@ const requestSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }]
-})
+},  {
+    timestamps: true
+});
 
 const Request = mongoose.model('Request', requestSchema);
 module.exports = Request;

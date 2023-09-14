@@ -13,44 +13,68 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
+  mutation signUp(
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+    $password: String!
+  ) {
+    signUp(
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      password: $password
+    ) {
       token
       user {
         _id
-        username
+        firstName
+        lastName
       }
     }
   }
 `;
 
-export const ADD_request = gql`
-  mutation addRequest($requestText: String!) {
-    addRequest(requestText: $requestText) {
+export const ADD_REQUEST = gql`
+  mutation createRequest(
+    $requestTitle: String!
+    $location: String!
+    $type: String!
+    $startTime: String!
+    $endTime: String!
+    $requestText: String!
+  ) {
+    createRequest(
+      requestTitle: $requestTitle
+      location: $location
+      type: $type
+      startTime: $startTime
+      endTime: $endTime
+      requestText: $requestText
+    ) {
       _id
-      requestText
-      requestAuthor
+      requestTitle
+      location
+      type
       createdAt
-      comments {
+      startTime
+      endTime
+      status
+      requestText
+      owner {
         _id
-        commentText
+      }
+      participants {
+        _id
       }
     }
   }
 `;
 
-export const ADD_COMMENT = gql`
-  mutation addComment($requestId: ID!, $commentText: String!) {
-    addComment(requestId: $requestId, commentText: $commentText) {
+export const DELETE_REQUEST = gql`
+  mutation deleteRequest($requestId: ID!) {
+    deleteRequest(requestId: $requestId) {
       _id
-      requestText
-      requestAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
     }
   }
 `;
