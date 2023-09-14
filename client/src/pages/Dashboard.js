@@ -7,6 +7,9 @@ const Dashboard = () => {
 
     return (
         <div>
+            {/* TODO: 
+                Dashboard with lists of offers and requests
+            */}
         </div>
     );
 };

@@ -2,11 +2,14 @@ import React, { useEffect } from 'react';
 
 const ForgotPassword = () => {
     useEffect(() => {
-        document.title = 'CareConnect | Error 404: Page Not Found';
+        document.title = 'CareConnect | Forgot Password';
     }, []);
 
     return (
         <div>
+            {/* TODO: 
+                Forgot password form
+            */}
         </div>
     );
 };

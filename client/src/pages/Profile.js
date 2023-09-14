@@ -10,6 +10,9 @@ const Profile = () => {
 
     return (
         <div>
+            {/* TODO: 
+                User profile page
+            */}
         </div>
     );
 };
