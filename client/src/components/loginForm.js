@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
-import { NextUIProvider } from "@nextui-org/react";
+import { Button, Input } from "@nextui-org/react";
 
 export default function LoginForm() {
-  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
   //handle input field changes
   const handleChange = (event) => {
@@ -36,47 +36,43 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="py-12">
+    <div className=" flex-wrap my-1">
       <form onSubmit={handleSubmit}>
-        <h2 className="text-2xl font-bold">Sign-In</h2>
-        <div className="mt-8 max-w-md mx-auto">
-          <div className="space-y-4">
-            <div>
-              <label htmlFor="username" className="text-gray-700 block">
-                Username
-              </label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                value={formData.username}
-                onChange={handleChange}
-                className="mt-1 px-2 py-1 w-full border border-gray-300 rounded focus:outline-none focus:border-black"
-              />
-            </div>
-            <div>
-              <label htmlFor="password" className="text-gray-700 block">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                className="mt-1 px-2 py-1 w-full border border-gray-300 rounded focus:outline-none focus:border-black"
-              />
-            </div>
+        <div className="flex-row space-between my-2">
+          <div className="flex-row space-between my-2">
+            <h2 className="text-2xl font-bold">Sign-In</h2>
           </div>
-          <div className="mt-4">
-            <button
-              type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-            >
-              Submit
-            </button>
-          </div>
-          <Link to="/signup">← Create an account</Link>
+          <Input
+            isRequired
+            name="email"
+            type="email"
+            label="Email"
+            placeholder="john.doe@gmail.com"
+            id="email"
+            className="max-w-xs"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between my-2">
+          <Input
+            isRequired
+            placeholder="******"
+            name="password"
+            type="password"
+            label="Password"
+            id="pwd"
+            className="max-w-xs"
+            onChange={handleChange}
+            onClear={() => console.log("input cleared")}
+          />
+        </div>
+        <div className="flex-row flex-end">
+          <Button type="submit" className="m-3">
+            Submit
+          </Button>
+          <Button>
+            <Link to="/signup">← Create an account</Link>
+          </Button>
         </div>
       </form>
     </div>
