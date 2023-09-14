@@ -1,7 +1,12 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const secret = process.env.JWT_SECRET;
+const secret = 'careconnectsupersecretsecret';
+
+if (!secret) {
+  console.log('Not loading')
+}
+
 const expiration = '1h';
 
 if (process.env.NODE_ENV === 'production' && !secret) {

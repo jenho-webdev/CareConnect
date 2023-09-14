@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // Components
-import LoginFrom from "../components/LoginForm";
+import LoginFrom from "../components/loginForm";
 
 // NextUI components
 import { Image } from "@nextui-org/react";
 
 const Login = () => {
   useEffect(() => {
-    document.title = 'CareConnect | Login';
+    document.title = "CareConnect | Login";
   }, []);
 
   return (

@@ -1,57 +1,131 @@
 import { gql } from "@apollo/client";
 
-export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
+export const QUERY_USERS = gql`
+  query getUsersByName($firstName: String!, $lastName: String!) {
+    getUsersByName(firstName: $firstName, lastName: $lastName) {
       _id
-      username
-      email
+      firstName
+      lastName
+    }
+  }
+`;
+
+export const QUERY_USER_INFO = gql`
+  query getUserById($_id: ID!) {
+    getUserById(_id: $_id) {
+      firstName
+      lastName
+      helpCircle {
+        _id
+        firstName
+        lastName
+      } 
       requests {
         _id
-        requestText
-        createdAt
+        location
+        type
+        startTime
+        endTime
+        status
+        participants {
+          _id
+          firstName
+          lastName
+        }
+      }
+      offers {
+        _id
+        location
+        type
+        startTime
+        endTime
+        status
+        owner {
+          _id
+          firstName
+          lastName
+        }
+        participants {
+          _id
+          firstName
+          lastName
+        }
       }
     }
   }
 `;
 
-export const QUERY_RQUESTS = gql`
-  query getRequests {
-    requests {
+export const QUERY_REQUESTS = gql`
+  query getAllRequests {
+    getAllRequests {
       _id
+      requestTitle
       requestText
-      requestAuthor
+      owner
       createdAt
+      location
+      type
+      startTime
+      endTime
+      status
+      participants
     }
   }
 `;
+
 export const QUERY_SINGLE_REQUEST = gql`
-  query getSingleRequest($requestId: ID!) {
-    request(requestId: $requestId) {
+  query getRequestById($requestId: ID!) {
+    getRequestById(requestId: $requestId) {
       _id
+      requestTitle
       requestText
-      requestAuthor
+      startTime
+      endTime
+      location
+      type
+      status
       createdAt
-      comments {
+      owner {
         _id
-        commentText
-        commentAuthor
-        createdAt
+        firstName
+        lastName
+      }
+      participants {
+        _id
+        firstName
+        lastName
       }
     }
   }
 `;
+
 export const QUERY_ME = gql`
   query me {
     me {
       _id
-      username
+      firstName
+      lastName
       email
+      helpCircle {
+        _id
+        firstName
+        lastName
+      } 
       requests {
         _id
-        requestText
-        requestAuthor
-        createdAt
+        location
+        type
+        startTime
+        endTime
+        status
+      }
+      offers {
+        _id
+        location
+        type
+        startTime
+        endTime
+        status
       }
     }
   }
