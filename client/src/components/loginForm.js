@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
+import { NextUIProvider } from "@nextui-org/react";
 
 export default function LoginForm() {
   const [formData, setFormData] = useState({ username: "", password: "" });
@@ -16,23 +17,22 @@ export default function LoginForm() {
   //handle form submit
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
-    try {
-      const { data } = await login({
-        variables: { ...formData },
-      });
 
-      Auth.login(data.login.token);
+    try {
+      const mutationRes = await login({
+        variables: { email: formData.email, password: formData.password },
+      });
+      const token = mutationRes.data.login.token;
+      Auth.login(token);
     } catch (e) {
       console.error(e);
     }
 
     // clear form values
     setFormData({
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     });
-
   };
 
   return (
@@ -76,6 +76,7 @@ export default function LoginForm() {
               Submit
             </button>
           </div>
+          <Link to="/signup">← Create an account</Link>
         </div>
       </form>
     </div>
