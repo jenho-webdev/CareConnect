@@ -7,25 +7,28 @@ import {
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
+
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+
 
 // CSS libraries/components/.css files
 import { NextUIProvider } from "@nextui-org/react";
 import "./App.css";
 
 // Pages
-import Home from "./pages/Home"; //where all requests within logged in user will be displayed in either a list or map view
-import Signup from "./pages/Signup"; //where the user will be able to signup
-import Login from "./pages/Login"; //where the user will be able to login
-import Dashboard from "./pages/Dashboard"; //where the user will be able to see all requests in a list view
-import Request from "./pages/Request"; //where a single request will be displayed
-import Profile from "./pages/Profile"; //where all user's own request will be displayed and where see it in either a list or in calendar view
-import NotFound from "./pages/NotFound"; //where the user will be redirected to if they try to access a page that does not exist
 
-// Components
-import Header from "./components/Header"; //where the site navbar will show up in all pages
-import Footer from "./components/Footer"; //where the site footer a long with links/credits will show up in all pages
+import Home from './pages/Home';  //where all requests within logged in user will be displayed in either a list or map view
+import Signup from './pages/Signup';   //where the user will be able to signup
+import Login from './pages/Login'; //where the user will be able to login
+import ForgotPassword from "./pages/ForgotPassword";
+import Dashboard from './pages/Dashboard'; //where the user will be able to see all requests in a list view
+import Request from './pages/Request'; //where a single request will be displayed
+import Profile from './pages/Profile'; //where all user's own request will be displayed and where see it in either a list or in calendar view
+import NotFound from './pages/NotFound'; //where the user will be redirected to if they try to access a page that does not exist
+import RequestsCalendar from "./components/RequestsCalendar"; //where the user will be able to see all requests in a calendar view
+// Styles
+import './styles/main.sass'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -60,24 +63,51 @@ function App() {
     // Wrap NextUIProvider at the root of your app
     <NextUIProvider>
       <ApolloProvider client={client}>
-        <Router>
-          <div className="flex-column justify-flex-start min-100-vh">
-            <Header />
-            <div className="container">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/request/:requestId" element={<Request />} />
-                <Route path="/user/:username" element={<Profile />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </div>
-            <Footer />
+
+      <Router>
+        <div className="flex-column justify-flex-start min-100-vh">
+          <div className="container">
+            <Routes>
+              <Route
+                path="/"
+                element={<Home />}
+              />
+              <Route 
+                path="/login"
+                element={<Login />}
+              />
+              <Route 
+                path="/signup"
+                element={<Signup />}
+              />
+              <Route
+                path="forgot-password"
+                element={<ForgotPassword />}
+              />
+              <Route 
+                path="/dashboard"
+                element={<Dashboard />}
+              />
+              <Route 
+                path="/request/:requestId"
+                element={<Request />} 
+              />
+              <Route
+                path="/user/:username"
+                element={<Profile />}
+              />
+              <Route 
+                path="*"
+                element={<NotFound />}
+              />
+              <Route 
+                path="/calendar" 
+                element={<RequestsCalendar />} />
+            </Routes>
           </div>
-        </Router>
-      </ApolloProvider>
+        </div>
+      </Router>
+    </ApolloProvider>
     </NextUIProvider>
   );
 }

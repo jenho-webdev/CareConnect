@@ -6,10 +6,10 @@ const NotFound = () => {
     }, []);
 
     return (
-        <main>
+        <div>
             <h1>Error 404:</h1>
             <p>The requested page could not be found.</p>
-        </main>
+        </div>
     );
 };
 

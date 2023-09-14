@@ -7,6 +7,12 @@ const Request = () => {
 
     return (
         <div>
+            {/* TODO: 
+                Title
+                Description
+                Other details...
+                Sign Up Button (if not creator of request)
+            */}
         </div>
     );
 };

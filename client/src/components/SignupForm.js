@@ -44,10 +44,10 @@ const SignupForm = () => {
             isRequired
             name="firstName"
             type="firstName"
-            label="First Name"
+            label="First Name:"
             placeholder="John"
             id="firstName"
-            className="max-w-xs"
+            className="max-w-xs shadow-lg"
             onChange={handleChange}
           />
         </div>
@@ -56,10 +56,10 @@ const SignupForm = () => {
             isRequired
             name="lastName"
             type="lastName"
-            label="Last Name"
+            label="Last Name:"
             placeholder="Doe"
             id="lastName"
-            className="max-w-xs"
+            className="max-w-xs shadow-lg"
             onChange={handleChange}
           />
         </div>
@@ -68,10 +68,10 @@ const SignupForm = () => {
             isRequired
             name="email"
             type="email"
-            label="Email"
+            label="Email:"
             placeholder="john.doe@gmail.com"
             id="email"
-            className="max-w-xs"
+            className="max-w-xs shadow-lg"
             onChange={handleChange}
           />
         </div>
@@ -81,18 +81,33 @@ const SignupForm = () => {
             placeholder="******"
             name="password"
             type="password"
-            label="Password"
+            label="Password:"
             id="pwd"
-            className="max-w-xs"
+            className="max-w-xs shadow-lg"
+            onChange={handleChange}
+            onClear={() => console.log("input cleared")}
+          />
+        </div>
+        <div className="flex-row space-between my-2">
+          <Input
+            placeholder="12345"
+            name="zipCode"
+            type="zipCode"
+            label="Zip Code:"
+            id="zipCode"
+            className="max-w-xs shadow-lg"
             onChange={handleChange}
             onClear={() => console.log("input cleared")}
           />
         </div>
         <div className="flex-row flex-end">
-          <Button type="submit" className="m-3">
+          <Button
+            type="submit"
+            className="m-3 bg-gradient-to-tr from-teal-600 to-zinc-800 text-white shadow-lg"
+          >
             Submit
           </Button>
-          <Button>
+          <Button className="m-3  text-black shadow-lg">
             <Link to="/login">← Go to Login</Link>
           </Button>
         </div>
