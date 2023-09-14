@@ -1,5 +1,13 @@
 # CareConnect
-Care Connect - Community Cirlcle
+Care Connect - Community Circle
+
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![Apollo-GraphQL](https://img.shields.io/badge/-ApolloGraphQL-311C87?style=for-the-badge&logo=apollo-graphql)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 
 ## Description
 
@@ -15,7 +23,9 @@ CareConnect is a dedicated community-based application designed to bridge the ga
   
 ## User Story
 ```
-As a member of the Care Connect Community Circle, I want to use the app to connect with fellow caregivers and individuals in similar caregiving situations to share experiences, exchange advice, and offer support.
+AS a member of the Care Connect Community Circle, 
+I WANT to use the app to connect with fellow caregivers and individuals in similar caregiving situations 
+SO THAT they can share experiences, exchange advice, and offer support.
 ```
 
 ## Requirements
@@ -41,19 +51,31 @@ Have a professional README (with unique name, description, technologies used, sc
   - [User Story](#user-story)
   - [Requirements](#requirements)
   - [Table of Contents](#table-of-contents)
+  - [Wireframes](#wireframes)
+  - [Screen Shots](#screen-shots)
   - [Colaborators](#colaborators)
   - [GitHub/Heroku](#githubheroku)
   - [Sources](#sources)
   - [Key Features](#key-features)
 
-
+## Wireframes
+```
 ![alt text](assets/images/ScreenShot.png)
 ![alt text](assets/images/ScreenShot1.png)
 ![alt text](assets/images/ScreenShot2.png)
 ![alt text](assets/images/ScreenShot3.png)
 ![alt text](assets/images/ScreenShot4.png)
-![alt text](assets/images/ScreenShot5.png)
+```
 
+## Screen Shots
+```
+![alt text](assets/images/ScreenShot5.png)
+![alt text](assets/images/ScreenShot6.png)
+![alt text](assets/images/ScreenShot7.png)
+![alt text](assets/images/ScreenShot8.png)
+![alt text](assets/images/ScreenShot9.png)
+![alt text](assets/images/ScreenShot10.png)
+```
 
 ## Colaborators
 ```
@@ -65,7 +87,9 @@ https://github.com/cwchilvers
 
 ```
 ## GitHub/Heroku
-
+```
+https://github.com/jenho-webdev/CareConnect
+```
 
 ## Sources
 ```
