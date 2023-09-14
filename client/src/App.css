@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input[type="email"],
+input[type="password"] {
+    /* Reset border, padding, and margin */
+    border: none;
+    padding: 0;
+    margin: 0;
+    /* Reset other styles as needed */
+}
