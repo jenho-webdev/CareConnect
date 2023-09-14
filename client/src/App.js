@@ -24,10 +24,6 @@ import Request from './pages/Request'; //where a single request will be displaye
 import Profile from './pages/Profile'; //where all user's own request will be displayed and where see it in either a list or in calendar view
 import NotFound from './pages/NotFound'; //where the user will be redirected to if they try to access a page that does not exist
 
-// Components
-import Header from './components/Header'; //where the site navbar will show up in all pages
-import Footer from './components/Footer'; //where the site footer a long with links/credits will show up in all pages
-
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -59,7 +55,6 @@ function App() {
       <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
           <div className="container">
             <Routes>
               <Route
@@ -92,7 +87,6 @@ function App() {
               />
             </Routes>
           </div>
-          <Footer />
         </div>
       </Router>
     </ApolloProvider>

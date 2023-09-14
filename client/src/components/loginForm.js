@@ -76,6 +76,17 @@ export default function LoginForm() {
               Submit
             </button>
           </div>
+          <div className="mt-4">
+            <p>
+              Don't have an account?{" "}
+              <Link
+                to="/signup"
+                className="text-blue-500 hover:text-blue-600 font-semibold"
+              >
+                Sign up here.
+              </Link>
+            </p>
+          </div>
         </div>
       </form>
     </div>
