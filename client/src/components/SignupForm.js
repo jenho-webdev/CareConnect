@@ -3,19 +3,25 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
+import { Button, Input } from "@nextui-org/react";
 
 const SignupForm = () => {
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [formState, setFormState] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const mutationResponse = await addUser({
       variables: {
-        email: formState.email,
-        password: formState.password,
         firstName: formState.firstName,
         lastName: formState.lastName,
+        email: formState.email,
+        password: formState.password,
       },
     });
     const token = mutationResponse.data.addUser.token;
@@ -32,50 +38,63 @@ const SignupForm = () => {
 
   return (
     <div className="container my-1">
-      <Link to="/login">← Go to Login</Link>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
-          <label htmlFor="firstName">First Name:</label>
-          <input
-            placeholder="First"
+          <Input
+            isRequired
             name="firstName"
             type="firstName"
+            label="First Name"
+            placeholder="John"
             id="firstName"
+            className="max-w-xs"
             onChange={handleChange}
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="lastName">Last Name:</label>
-          <input
-            placeholder="Last"
+          <Input
+            isRequired
             name="lastName"
             type="lastName"
+            label="Last Name"
+            placeholder="Doe"
             id="lastName"
+            className="max-w-xs"
             onChange={handleChange}
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email:</label>
-          <input
-            placeholder="youremail@test.com"
+          <Input
+            isRequired
             name="email"
             type="email"
+            label="Email"
+            placeholder="john.doe@gmail.com"
             id="email"
+            className="max-w-xs"
             onChange={handleChange}
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
-          <input
+          <Input
+            isRequired
             placeholder="******"
             name="password"
             type="password"
+            label="Password"
             id="pwd"
+            className="max-w-xs"
             onChange={handleChange}
+            onClear={() => console.log("input cleared")}
           />
         </div>
         <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
+          <Button type="submit" className="m-3">
+            Submit
+          </Button>
+          <Button>
+            <Link to="/login">← Go to Login</Link>
+          </Button>
         </div>
       </form>
     </div>
