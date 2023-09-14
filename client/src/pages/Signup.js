@@ -9,9 +9,7 @@ const Signup = () => {
     }, []);
 
     return (
-        <div>
-            <SignupForm />
-        </div>
+        <SignupForm />
     );
 };
 

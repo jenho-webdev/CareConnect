@@ -8,7 +8,6 @@ const Profile = () => {
   useEffect(() => {
     document.title = `CareConnect | ${username}`;
   }, [username]);
-
   return (
     <div>
       <RequestsCalendar />

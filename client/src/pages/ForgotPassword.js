@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 
-const Dashboard = () => {
+const ForgotPassword = () => {
     useEffect(() => {
-        document.title = 'CareConnect | My Dashboard';
+        document.title = 'CareConnect | Forgot Password';
     }, []);
 
     return (
         <div>
             {/* TODO: 
-                Dashboard with lists of offers and requests
+                Forgot password form
             */}
         </div>
     );
 };
 
-export default Dashboard;
+export default ForgotPassword;
