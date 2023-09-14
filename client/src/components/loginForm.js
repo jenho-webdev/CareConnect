@@ -40,7 +40,7 @@ export default function LoginForm() {
       <form onSubmit={handleSubmit}>
         <div className="flex-row space-between my-2">
           <div className="flex-row space-between my-2">
-            <h2 className="text-2xl font-bold">Sign-In</h2>
+            <h2 className="text-2xl font-bold">Sign In</h2>
           </div>
           <Input
             isRequired
@@ -49,7 +49,7 @@ export default function LoginForm() {
             label="Email"
             placeholder="john.doe@gmail.com"
             id="email"
-            className="max-w-xs"
+            className="max-w-xs shadow-lg"
             onChange={handleChange}
           />
         </div>
@@ -61,16 +61,19 @@ export default function LoginForm() {
             type="password"
             label="Password"
             id="pwd"
-            className="max-w-xs"
+            className="max-w-xs shadow-lg"
             onChange={handleChange}
             onClear={() => console.log("input cleared")}
           />
         </div>
         <div className="flex-row flex-end">
-          <Button type="submit" className="m-3">
+          <Button
+            type="submit"
+            className="m-3 bg-gradient-to-tr from-teal-600 to-zinc-800 text-white shadow-lg"
+          >
             Submit
           </Button>
-          <Button>
+          <Button className=" text-black shadow-lg">
             <Link to="/signup">← Create an account</Link>
           </Button>
         </div>
