@@ -24,7 +24,7 @@ const SignupForm = () => {
         password: formState.password,
       },
     });
-    const token = mutationResponse.data.addUser.token;
+    const token = mutationResponse.data.signUp.token;
     Auth.login(token);
   };
 

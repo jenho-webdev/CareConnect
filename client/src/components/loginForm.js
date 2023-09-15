@@ -77,5 +77,7 @@ export default function LoginForm() {
             <Link to="/signup">← Create an account</Link>
           </Button>
         </div>
+      </form>
+    </div>
     );
 }
