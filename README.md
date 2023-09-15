@@ -59,23 +59,23 @@ Have a professional README (with unique name, description, technologies used, sc
   - [Key Features](#key-features)
 
 ## Wireframes
-```
+
 ![alt text](assets/images/ScreenShot.png)
 ![alt text](assets/images/ScreenShot1.png)
 ![alt text](assets/images/ScreenShot2.png)
 ![alt text](assets/images/ScreenShot3.png)
 ![alt text](assets/images/ScreenShot4.png)
-```
+
 
 ## Screen Shots
-```
+
 ![alt text](assets/images/ScreenShot5.png)
 ![alt text](assets/images/ScreenShot6.png)
 ![alt text](assets/images/ScreenShot7.png)
 ![alt text](assets/images/ScreenShot8.png)
 ![alt text](assets/images/ScreenShot9.png)
 ![alt text](assets/images/ScreenShot10.png)
-```
+
 
 ## Colaborators
 ```
