@@ -28,7 +28,7 @@ export const ADD_USER = gql`
       zipcode: $zipcode
     ) {
       token
-      user {
+      newUser {
         _id
         firstName
         lastName
