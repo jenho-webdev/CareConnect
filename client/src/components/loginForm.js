@@ -10,7 +10,10 @@ export default function LoginForm() {
     email: "",
     password: "",
   });
+
   const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
   //handle input field changes
   const handleChange = (event) => {
@@ -33,14 +36,27 @@ export default function LoginForm() {
         },
       });
       if (!mutationRes.data.login) {
-        alert("Login Failed. Please check your credentials and try again.");
+        setShowAlert(true);
+        setAlertMessage("Login Failed. Please check your credentials.");
+        setTimeout(() => {
+          setShowAlert(false); // Hide the alert after a certain time (e.g., 3000ms or 3 seconds)
+          setAlertMessage(""); // Reset the message to an empty string
+        }, 3000); // Adjust the time as needed (measured in milliseconds)
+
         return;
       }
 
       const token = mutationRes.data.login.token;
+      setShowAlert(false);
       Auth.login(token);
     } catch (e) {
-      console.error(e);
+      console.error("An error occurred during login: ", e.message);
+      setShowAlert(true);
+      setAlertMessage(`{e.message}`);
+      setTimeout(() => {
+        setShowAlert(false); // Hide the alert after a certain time (e.g., 3000ms or 3 seconds)
+        setAlertMessage(""); // Reset the message to an empty string
+      }, 3000); // Adjust the time as needed (measured in milliseconds)
     }
 
     // clear form values
@@ -81,16 +97,25 @@ export default function LoginForm() {
             onClear={() => console.log("input cleared")}
           />
         </div>
-        <div className="flex-row flex-end">
+        <div className="flex-row flex-start">
           <Button
             type="submit"
             className="m-3 bg-gradient-to-tr from-teal-600 to-zinc-800 text-white shadow-lg"
           >
             Submit
           </Button>
-          <Button className=" text-black shadow-lg">
+          <Button className=" m-3 text-black shadow-lg">
             <Link to="/signup">← Create an account</Link>
           </Button>
+        </div>
+        <div className="flex-row flex-end" role="alert">
+          {showAlert && (
+            <>
+              <div className=" alert text-white ext-sm font-bold px-4 py-4">
+                <p className="text-m font-bold text-red-400">Login Failed!</p>
+              </div>
+            </>
+          )}
         </div>
       </form>
     </div>

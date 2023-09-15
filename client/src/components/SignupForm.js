@@ -27,6 +27,10 @@ const SignupForm = () => {
     if (!isPasswordValid(formState.password)) {
       // Password is invalid, show an alert and return
       setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false); // Hide the alert after a certain time (e.g., 3000ms or 3 seconds)
+      }, 3000); // Adjust the time as needed (measured in milliseconds)
+
       return;
     }
     try {
@@ -41,6 +45,9 @@ const SignupForm = () => {
       });
       if (!mutationResponse.data.signUp) {
         setShowAlert(true);
+        setTimeout(() => {
+          setShowAlert(false); // Hide the alert after a certain time (e.g., 3000ms or 3 seconds)
+        }, 3000); // Adjust the time as needed (measured in milliseconds)
         return;
       }
 
@@ -49,6 +56,7 @@ const SignupForm = () => {
       Auth.login(token);
     } catch (e) {
       console.error(e);
+      setShowAlert(true);
     }
   };
 
@@ -112,10 +120,12 @@ const SignupForm = () => {
             type="password"
             label="Password:"
             id="pwd"
-            className={`max-w-xs shadow-lg ${
-              passwordValid ? "" : "border-red-500" // Update border color based on password validity
-            }`}
-            errorMessage={passwordValid ? "" : "Please enter a valid password"}
+            className="max-w-xs shadow-lg"
+            errorMessage={
+              passwordValid
+                ? ""
+                : "Please enter a password with at least 8 characters."
+            }
             isInvalid={passwordValid ? "invalid" : "valid"}
             onChange={handleChange}
             onClear={() => console.log("input cleared")}
@@ -146,9 +156,7 @@ const SignupForm = () => {
         </div>
         <div className="flex-row flex-end">
           {showAlert && (
-            <div className="alert">
-              Invalid username or password. Please try again.
-            </div>
+            <div className="alert">Signup Failed. Please try again.</div>
           )}
         </div>
       </form>
