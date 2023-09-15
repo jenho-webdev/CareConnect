@@ -6,12 +6,19 @@ import Auth from "../utils/auth";
 import { Button, Input } from "@nextui-org/react";
 
 export default function LoginForm() {
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
   const [login, { error, data }] = useMutation(LOGIN_USER);
+
   //handle input field changes
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   //handle form submit
@@ -20,8 +27,16 @@ export default function LoginForm() {
 
     try {
       const mutationRes = await login({
-        variables: { email: formData.email, password: formData.password },
+        variables: {
+          email: formData.email,
+          password: formData.password,
+        },
       });
+      if (!mutationRes.data.login) {
+        alert("Login Failed. Please check your credentials and try again.");
+        return;
+      }
+
       const token = mutationRes.data.login.token;
       Auth.login(token);
     } catch (e) {
@@ -39,9 +54,9 @@ export default function LoginForm() {
     <div className=" flex-wrap my-1">
       <form onSubmit={handleSubmit}>
         <div className="flex-row space-between my-2">
-          <div className="flex-row space-between my-2">
-            <h2 className="text-2xl font-bold">Sign In</h2>
-          </div>
+          <h2 className="text-2xl font-bold">Sign In</h2>
+        </div>
+        <div className="flex-row space-between my-2">
           <Input
             isRequired
             name="email"
@@ -79,5 +94,5 @@ export default function LoginForm() {
         </div>
       </form>
     </div>
-    );
+  );
 }

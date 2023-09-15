@@ -11,21 +11,45 @@ const SignupForm = () => {
     lastName: "",
     email: "",
     password: "",
+    zipcode: "",
   });
+  const [showAlert, setShowAlert] = useState(false);
+  const [passwordValid, setPasswordValid] = useState(true); // State variable for password validation
   const [addUser] = useMutation(ADD_USER);
+
+  // Password validation function
+  const isPasswordValid = (password) => {
+    return password.length >= 8;
+  };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const mutationResponse = await addUser({
-      variables: {
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-        email: formState.email,
-        password: formState.password,
-      },
-    });
-    const token = mutationResponse.data.signUp.token;
-    Auth.login(token);
+    if (!isPasswordValid(formState.password)) {
+      // Password is invalid, show an alert and return
+      setShowAlert(true);
+      return;
+    }
+    try {
+      const mutationResponse = await addUser({
+        variables: {
+          firstName: formState.firstName,
+          lastName: formState.lastName,
+          email: formState.email,
+          password: formState.password,
+          zipcode: formState.zipcode,
+        },
+      });
+      if (!mutationResponse.data.signUp) {
+        setShowAlert(true);
+        return;
+      }
+
+      const token = mutationResponse.data.signUp.token;
+
+      Auth.login(token);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const handleChange = (event) => {
@@ -34,6 +58,10 @@ const SignupForm = () => {
       ...formState,
       [name]: value,
     });
+    if (name === "password") {
+      // Check password validity as it changes
+      setPasswordValid(isPasswordValid(value));
+    }
   };
 
   return (
@@ -83,7 +111,9 @@ const SignupForm = () => {
             type="password"
             label="Password:"
             id="pwd"
-            className="max-w-xs shadow-lg"
+            className={`max-w-xs shadow-lg ${
+              !passwordValid ? "border-red-500" : "" // Add a border when password is invalid
+            }`}
             onChange={handleChange}
             onClear={() => console.log("input cleared")}
           />
@@ -91,10 +121,10 @@ const SignupForm = () => {
         <div className="flex-row space-between my-2">
           <Input
             placeholder="12345"
-            name="zipCode"
-            type="zipCode"
+            name="zipcode"
+            type="zipcode"
             label="Zip Code:"
-            id="zipCode"
+            id="zipcode"
             className="max-w-xs shadow-lg"
             onChange={handleChange}
             onClear={() => console.log("input cleared")}
@@ -110,6 +140,13 @@ const SignupForm = () => {
           <Button className="m-3  text-black shadow-lg">
             <Link to="/login">← Go to Login</Link>
           </Button>
+        </div>
+        <div className="flex-row flex-end">
+          {showAlert && (
+            <div className="alert">
+              Invalid username or password. Please try again.
+            </div>
+          )}
         </div>
       </form>
     </div>
