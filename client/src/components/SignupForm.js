@@ -54,14 +54,15 @@ const SignupForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
+
     if (name === "password") {
       // Check password validity as it changes
       setPasswordValid(isPasswordValid(value));
     }
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
   };
 
   return (
@@ -112,8 +113,10 @@ const SignupForm = () => {
             label="Password:"
             id="pwd"
             className={`max-w-xs shadow-lg ${
-              !passwordValid ? "border-red-500" : "" // Add a border when password is invalid
+              passwordValid ? "" : "border-red-500" // Update border color based on password validity
             }`}
+            errorMessage={passwordValid ? "" : "Please enter a valid password"}
+            isInvalid={passwordValid ? "invalid" : "valid"}
             onChange={handleChange}
             onClear={() => console.log("input cleared")}
           />
