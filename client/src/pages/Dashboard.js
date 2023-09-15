@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
 
+// Components
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
 const Dashboard = () => {
     useEffect(() => {
         document.title = 'CareConnect | My Dashboard';
@@ -7,10 +11,15 @@ const Dashboard = () => {
 
     return (
         <div>
-            {/* TODO: 
-                Dashboard with lists of offers and requests
-            */}
+            <Header />
+            <main>
+                <h1>My Dashboard</h1>
+                <List title="My Offers" offers={offers} />
+                <List title="My Requests" requests={requests} />
+            </main>
+            <Footer />
         </div>
+
     );
 };
 
