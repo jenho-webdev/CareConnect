@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 
+// Components
+import ForgotPasswordForm from '../components/ForgotPasswordForm';
+
 const ForgotPassword = () => {
     useEffect(() => {
         document.title = 'CareConnect | Forgot Password';
@@ -7,9 +10,7 @@ const ForgotPassword = () => {
 
     return (
         <div>
-            {/* TODO: 
-                Forgot password form
-            */}
+            <ForgotPasswordForm />
         </div>
     );
 };
