@@ -9,7 +9,7 @@ export default function RequestsCalendar() {
   const events = [
     {
       id: 15,
-      title: "balh",
+      title: "Title"+"balh",
       start: now,
       end: now,
     },
