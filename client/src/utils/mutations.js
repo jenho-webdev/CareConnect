@@ -26,7 +26,7 @@ export const ADD_USER = gql`
       password: $password
     ) {
       token
-      user {
+      newUser {
         _id
         firstName
         lastName
