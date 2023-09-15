@@ -39,3 +39,16 @@ Toolbar Elements:
 
 
 /* customizing event styles */
+.rbc-toolbar button {
+    background-color: #afeec9;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Replace with your desired background color */
+}
+
+/* Style the active button with shadows */
+.toolbar-button.active {
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    /* Add a larger box-shadow for active button */
+}

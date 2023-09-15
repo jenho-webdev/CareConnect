@@ -1,7 +1,7 @@
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-// import "./calendar.css";
+import "./calendar.css";
 
 export default function RequestsCalendar() {
   const localizer = momentLocalizer(moment);
@@ -42,7 +42,7 @@ export default function RequestsCalendar() {
         break;
       // Add more cases for other event types
       default:
-        backgroundColor = "Teal"; // Default color for unknown types
+        backgroundColor = "#A0AEC0"; // Default color for unknown types
         break;
     }
 
