@@ -108,6 +108,17 @@ const resolvers = {
                 return createRequest;
             }
             throw new AuthenticationError('Unauthorized request.');
+        },
+        offerHelp: async (_, { requestId }, context) => {
+            if (context.user) {
+
+                const addOffer = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { offers: requestId } }
+                );
+                return addOffer;
+            }
+            throw new AuthenticationError('Unauthorized request.');
         }
     }
 }

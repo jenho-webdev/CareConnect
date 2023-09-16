@@ -64,6 +64,9 @@ const typeDefs = gql`
             endTime: String!, 
             requestText: String!
         ): Request
+        offerHelp(
+            requestId: ID!
+        ): Request
     }
 
     type AuthSignUp {
