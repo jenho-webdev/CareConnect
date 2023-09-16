@@ -36,6 +36,35 @@ const resolvers = {
         getAllRequests: async () => {  
             return await Request.find().populate('owner participants');
         },
+        // Maybe a better way to show errors (check context first)?
+        getMyRequests: async (_, args, context) => {
+            if (!context.user) {
+                throw new AuthenticationError('You must be logged in to view your requests.');
+            }
+            
+            return await Request.find({ owner: context.user._id })
+                .populate('owner', '_id firstName lastName')
+                .populate('participants', '_id firstName lastName');
+        },
+        getMyHelpCircle: async (_, args, context) => {
+            if (!context.user) {
+                throw new AuthenticationError('You must be logged in to view your help circle.');
+            }
+            
+            const friendSearch = await User.findOne({ _id: context.user._id })
+                .populate('helpCircle', '_id firstName lastName email zip'); 
+    
+            return friendSearch;
+        },
+        getMyOffers: async (_, args, context) => {
+            if (!context.user) {
+                throw new AuthenticationError('You must be logged in to view your offers.');
+            }
+            // Can also retrieve requests by id if that info is available. 
+            return await Request.find({ participants: context.user._id })
+                .populate('owner', '_id firstName lastName zip')
+                .populate('participants', '_id firstName lastName zip');
+        },
         me: async (_, args, context) => {
             if (context.user) {
                 return User.findOne({ _id: context.user._id }).populate('helpCircle requests offers');
@@ -48,7 +77,7 @@ const resolvers = {
         
         signUp: async (_, { firstName, lastName, email, zip, password }) => {
             try {
-                const newUser = await User.create({ firstName, lastName, email, zip, password });
+                const newUser = await User.create({ firstName, lastName, email, zip: String(zip), password });
                 const token = signToken(newUser);
                 return { token, newUser};
             } catch (error) {
