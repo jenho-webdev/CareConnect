@@ -81,3 +81,19 @@ export const DELETE_REQUEST = gql`
     }
   }
 `;
+
+export const OFFER_HELP = gql`
+  mutation offerHelp($requestId: ID!) {
+    offerHelp(requestId: $requestId) {
+      _id
+    }
+  }
+`;
+
+export const CANCEL_HELP = gql`
+  mutation cancelHelp($requestId: ID!) {
+    cancelHelp(requestId: $requestId) {
+      _id
+    }
+  }
+`;

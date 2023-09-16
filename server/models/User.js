@@ -17,6 +17,10 @@ const userSchema = new Schema({
         required: true,
         unique: true,
     },
+    zip: {
+        type: String,
+        required: true,
+    },
     helpCircle: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
