@@ -18,14 +18,14 @@ export const ADD_USER = gql`
     $lastName: String!
     $email: String!
     $password: String!
-    $zipcode: String!
+    $zip: String!
   ) {
     signUp(
       firstName: $firstName
       lastName: $lastName
       email: $email
       password: $password
-      zipcode: $zipcode
+      zip: $zip
     ) {
       token
       newUser {

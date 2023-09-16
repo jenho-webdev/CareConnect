@@ -6,6 +6,7 @@ export const QUERY_USERS = gql`
       _id
       firstName
       lastName
+      zip
     }
   }
 `;
@@ -15,6 +16,7 @@ export const QUERY_USER_INFO = gql`
     getUserById(_id: $_id) {
       firstName
       lastName
+      zip
       helpCircle {
         _id
         firstName
@@ -99,6 +101,70 @@ export const QUERY_SINGLE_REQUEST = gql`
   }
 `;
 
+export const QUERY_MY_REQUESTS = gql`
+  query getMyRequests {
+    getMyRequests {
+      _id
+      requestTitle
+      location
+      type
+      startTime
+      endTime
+      requestText
+      status
+      owner {
+          _id
+          firstName
+          lastName
+      }
+      participants {
+          _id
+          firstName
+          lastName
+      }
+    }
+  }
+`;
+
+export const QUERY_MY_OFFERS = gql`
+  query getMyOffers {
+    getMyOffers {
+      _id
+      requestTitle
+      location
+      type
+      startTime
+      endTime
+      status
+      requestText
+      owner {
+          _id
+          firstName
+          lastName
+          zip
+      }
+      participants {
+          _id
+          firstName
+          lastName
+          zip
+      }
+    }
+  }
+`;
+
+export const QUERY_MY_HELP_CIRCLE = gql`
+  query getMyHelpCircle {
+    getMyHelpCircle {
+      _id
+      firstName
+      lastName
+      email
+      zip
+    }
+  }
+`;
+
 export const QUERY_ME = gql`
   query me {
     me {
@@ -106,10 +172,12 @@ export const QUERY_ME = gql`
       firstName
       lastName
       email
+      zip
       helpCircle {
         _id
         firstName
         lastName
+        zip
       } 
       requests {
         _id
