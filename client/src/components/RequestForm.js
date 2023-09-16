@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
 
-const RequestForm = () => {
-    render() {
+import { ADD_REQUEST } from '../../utils/mutations';
+
+import Auth from '../../utils/auth';
+
+export default  function const RequestForm = ({userId}) => {
+
+
+
+    
+
+     
         return (
             <div>
                 {/* TODO: 
@@ -13,7 +24,7 @@ const RequestForm = () => {
                 */}
             </div>
         );
-    }
+  
 }
 
-export default RequestForm;
+ 
