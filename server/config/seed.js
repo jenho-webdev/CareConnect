@@ -8,6 +8,7 @@ db.once('open', async () => {
         lastName: "Doe",
         email: "john.doe@example.com",
         password: "johnpassword123",
+        zip: "12345",
         helpCircle: [],
         requests: [],
         offers: []
@@ -17,6 +18,7 @@ db.once('open', async () => {
         lastName: "Smith",
         email: "jane.smith@example.com",
         password: "janepassword123",
+        zip: "54321",
         helpCircle: [],
         requests: [],
         offers: []
@@ -26,6 +28,7 @@ db.once('open', async () => {
         lastName: "Johnson",
         email: "alice.johnson@example.com",
         password: "alicepassword123",
+        zip: "98765",
         helpCircle: [],
         requests: [],
         offers: []

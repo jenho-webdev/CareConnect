@@ -20,10 +20,10 @@ import Home from "./pages/Home"; //where all requests within logged in user will
 import Signup from "./pages/Signup"; //where the user will be able to signup
 import Login from "./pages/Login"; //where the user will be able to login
 import ForgotPassword from "./pages/ForgotPassword";
-import Dashboard from "./pages/Dashboard"; //where the user will be able to see all requests in a list view
-import Request from "./pages/Request"; //where a single request will be displayed
-import Profile from "./pages/Profile"; //where all user's own request will be displayed and where see it in either a list or in calendar view
-import NotFound from "./pages/NotFound"; //where the user will be redirected to if they try to access a page that does not exist
+import Dashboard from './pages/Dashboard'; //where the user will be able to see all requests in a list view
+import Request from './pages/Request'; //where a single request will be displayed
+import Profile from './pages/Profile'; //where all user's own request will be displayed and where see it in either a list or in calendar view
+import NotFound from './pages/NotFound'; //where the user will be redirected to if they try to access a page that does not exist
 import RequestsCalendar from "./components/calendar/RequestsCalendar"; //where the user will be able to see all requests in a calendar view
 // Styles
 import "./styles/main.sass";
