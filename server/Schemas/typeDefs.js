@@ -33,6 +33,9 @@ const typeDefs = gql`
     getUsersByName(firstName: String!, lastName: String!): [User]
     getUserById(_id: ID!): User
     getRequestById(requestId: ID!): Request
+    getMyRequests: [Request]
+    getMyHelpCircle: [User]
+    getMyOffers: [Request]
     me: User
   }
 
@@ -42,7 +45,7 @@ const typeDefs = gql`
       lastName: String!
       email: String!
       password: String!
-      zipcode: String!
+      zip: String!
     ): AuthSignUp
     login(email: String!, password: String!): AuthLogin
     deleteRequest(requestId: ID!): Request

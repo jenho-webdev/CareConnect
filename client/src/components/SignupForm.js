@@ -11,7 +11,7 @@ const SignupForm = () => {
     lastName: "",
     email: "",
     password: "",
-    zipcode: "",
+    zip: "",
   });
   const [showAlert, setShowAlert] = useState(false);
   const [passwordValid, setPasswordValid] = useState(true); // State variable for password validation
@@ -40,7 +40,7 @@ const SignupForm = () => {
           lastName: formState.lastName,
           email: formState.email,
           password: formState.password,
-          zipcode: formState.zipcode,
+          zip: formState.zip,
         },
       });
       if (!mutationResponse.data.signUp) {
@@ -134,7 +134,7 @@ const SignupForm = () => {
         <div className="flex-row  my-2">
           <Input
             placeholder="12345"
-            name="zipcode"
+            name="zip"
             type="zipcode"
             label="Zip Code:"
             id="zipcode"
