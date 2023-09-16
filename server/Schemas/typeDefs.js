@@ -7,6 +7,7 @@ const typeDefs = gql`
     firstName: String!
     lastName: String!
     email: String!
+    zip: String!
     helpCircle: [User]
     requests: [Request]
     offers: [Request]
@@ -53,9 +54,8 @@ const typeDefs = gql`
       endTime: String!
       requestText: String!
     ): Request
-        offerHelp(
-            requestId: ID!
-        ): Request
+    offerHelp(requestId: ID!): Request
+    cancelHelp(requestId: ID!): Request
   }
 
   type AuthSignUp {

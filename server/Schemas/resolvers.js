@@ -46,9 +46,9 @@ const resolvers = {
 
     Mutation: {
         
-        signUp: async (_, { firstName, lastName, email, password }) => {
+        signUp: async (_, { firstName, lastName, email, zip, password }) => {
             try {
-                const newUser = await User.create({ firstName, lastName, email, password });
+                const newUser = await User.create({ firstName, lastName, email, zip, password });
                 const token = signToken(newUser);
                 return { token, newUser};
             } catch (error) {
@@ -116,10 +116,31 @@ const resolvers = {
                     { _id: context.user._id },
                     { $push: { offers: requestId } }
                 );
+
+                await Request.findByIdAndUpdate(
+                    { _id: requestId },
+                    { $push: { participants: context.user._id } }
+                )
                 return addOffer;
             }
             throw new AuthenticationError('Unauthorized request.');
-        }
+        },
+        cancelHelp: async (_, { requestId }, context) => {
+            if (context.user) {
+
+                const removeOffer = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { offers: requestId } }
+                );
+
+                await Request.findByIdAndUpdate(
+                    { _id: requestId },
+                    { $pull: { participants: context.user._id } }
+                )
+                return removeOffer;
+            }
+            throw new AuthenticationError('Unauthorized request.');
+        },
     }
 }
 
