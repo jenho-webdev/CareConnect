@@ -4,9 +4,6 @@ import { useQuery } from "@apollo/client";
 import { User, Link } from "@nextui-org/react";
 
 //import components
-import RequestsCalendar from "../components/calendar/RequestsCalendar"; //where the user will be able to see all requests in a calendar view
-//import RequestList from "../components/RequestList"; //where the user will be able to see all requests in a list view
-//import RequestForm from "../components/RequestForm"; //where the user will be able to create a new request
 
 //import queries
 import { QUERY_USER_INFO, QUERY_ME } from "../utils/queries";
@@ -44,6 +41,7 @@ const Profile = () => {
 
   return (
     <div>
+      {/* showing logged-in user's own profile card */}
       <User
         name={`${user.firstName} ${user.lastName}`}
         description={
@@ -59,7 +57,7 @@ const Profile = () => {
           src: "https://i.pravatar.cc/150?u=${user._id}"
         `}
       />
-      <RequestsCalendar />
+      {/* a table of some sort to show a list of users */}
     </div>
   );
 };
