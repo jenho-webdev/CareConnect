@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { Button, Input } from "@nextui-org/react";
+import { Navigate } from "react-router-dom";
 
 export default function LoginForm() {
   const [formData, setFormData] = useState({
@@ -49,6 +50,7 @@ export default function LoginForm() {
       const token = mutationRes.data.login.token;
       setShowAlert(false);
       Auth.login(token);
+      <Navigate to="/Home" />;
     } catch (e) {
       console.error("An error occurred during login: ", e.message);
       setShowAlert(true);

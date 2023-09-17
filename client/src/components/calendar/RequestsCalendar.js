@@ -52,6 +52,13 @@ export default function RequestsCalendar() {
       },
     };
   };
+  // Define the views you want to display in the calendar
+  const availableViews = {
+    month: true,
+    week: true,
+    day: true,
+  };
+
   return (
     <div>
       <Calendar
@@ -63,6 +70,7 @@ export default function RequestsCalendar() {
         startAccessor="start"
         endAccessor="end"
         eventPropGetter={eventStyleGetter} // Apply custom styles to events
+        views={availableViews} // Set the available views
       />
     </div>
   );
