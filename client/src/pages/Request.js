@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
 
+// Components
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
 const Request = () => {
     useEffect(() => {
         document.title = 'CareConnect | '; // TODO: Pass in request title
@@ -8,12 +12,6 @@ const Request = () => {
     return (
         <div>
             <Header />
-            {/* TODO: 
-                Title
-                Description
-                Other details...
-                Sign Up Button (if not creator of request)
-            */}
             <main>
                 <h1>{request.title}</h1>
                 <p>{request.description}</p>

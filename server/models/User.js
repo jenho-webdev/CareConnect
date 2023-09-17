@@ -17,6 +17,10 @@ const userSchema = new Schema({
         required: true,
         unique: true,
     },
+    zip: {
+        type: String,
+        required: true,
+    },
     helpCircle: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -28,6 +32,10 @@ const userSchema = new Schema({
     offers: [{
         type: Schema.Types.ObjectId,
         ref: 'Request'
+    }],
+    friendRequests: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }],
     password: {
         type: String,
