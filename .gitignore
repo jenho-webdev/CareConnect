@@ -5,6 +5,9 @@
 # Client Side Front-End Development Tools
 /client/src/stories
 /client/.storybook  
+/client/src/utils/tempdata.js
+
+
 
 # dependencies
 **/node_modules
