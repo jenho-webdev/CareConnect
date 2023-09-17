@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
 import { Button, Input } from "@nextui-org/react";
+import { Navigate } from "react-router-dom";
 
 const SignupForm = () => {
   const [formState, setFormState] = useState({
@@ -54,6 +55,7 @@ const SignupForm = () => {
       const token = mutationResponse.data.signUp.token;
 
       Auth.login(token);
+      <Navigate to="/Home" />;
     } catch (e) {
       console.error(e);
       setShowAlert(true);
@@ -84,7 +86,7 @@ const SignupForm = () => {
             label="First Name:"
             placeholder="John"
             id="firstName"
-            className="min-w-full shadow-lg min-w-max"
+            className="min-w-full shadow-lg"
             onChange={handleChange}
           />
         </div>
@@ -146,7 +148,7 @@ const SignupForm = () => {
         <div className="flex-row   ">
           <Button
             type="submit"
-            className="w-full max-w-xs shadow-lg bg-gradient-to-tr from-teal-600 to-zinc-800 text-white shadow-lg"
+            className="w-full max-w-xs bg-gradient-to-tr from-teal-600 to-zinc-800 text-white shadow-lg"
           >
             Create Account
           </Button>

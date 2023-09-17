@@ -16,7 +16,7 @@ import "./App.css";
 
 // Pages
 
-import Home from "./pages/Home"; //where all requests within logged in user will be displayed in either a list or map view
+//import Home from "./pages/Home"; //where all requests within logged in user will be displayed in either a list or map view
 import Signup from "./pages/Signup"; //where the user will be able to signup
 import Login from "./pages/Login"; //where the user will be able to login
 import ForgotPassword from "./pages/ForgotPassword";
@@ -25,6 +25,7 @@ import Request from "./pages/Request"; //where a single request will be displaye
 import Profile from "./pages/Profile"; //where all user's own request will be displayed and where see it in either a list or in calendar view
 import NotFound from "./pages/NotFound"; //where the user will be redirected to if they try to access a page that does not exist
 import RequestsCalendar from "./components/calendar/RequestsCalendar"; //where the user will be able to see all requests in a calendar view
+import CreateRequest from "./components/RequestForm"; //where the user will be able to see all requests in a calendar view
 // Styles
 import "./styles/main.sass";
 
@@ -74,6 +75,7 @@ function App() {
                 <Route path="/user/:username" element={<Profile />} />
                 <Route path="*" element={<NotFound />} />
                 <Route path="/calendar" element={<RequestsCalendar />} />
+                <Route path="/createrequest" element={<CreateRequest />} />
               </Routes>
             </div>
           </div>
