@@ -1,17 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Components
 import SignupForm from '../components/SignupForm';
 
-const Settings = () => {
+const Signup = () => {
     useEffect(() => {
         document.title = 'CareConnect | Signup';
     }, []);
 
     return (
-        <div>
-            <SignupForm />
-        </div>
+        <SignupForm />
     );
 };
 

@@ -1,8 +1,40 @@
-node_modules
-.DS_Store
-.dccache
-package-lock.json
-.env
-.init.sql
-dist
-build
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Ignore files and directories for the both server and client-sides
+
+# Client Side Front-End Development Tools
+/client/src/stories
+/client/.storybook  
+
+# dependencies
+**/node_modules
+**/package-lock.json
+
+
+# production
+**/build
+**/temp_data
+
+# env
+
+**/.env*
+!/**/.env*.example
+
+# personal config
+.idea
+.vscode
+**/*.log*
+**/logs
+**/temp
+
+
+# Dependency Management Configuration
+**/.npmrc
+**/.yarnrc
+
+#IDE/Editor Configuration Files:
+**/.editorconfig
+**/.eslintrc
+**/.prettierrc
+
+

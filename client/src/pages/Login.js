@@ -1,18 +1,30 @@
-import React from 'react';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // Components
-import LoginForm from '../components/LoginForm';
+import LoginFrom from "../components/LoginForm";
+
+// NextUI components
+import { Image } from "@nextui-org/react";
 
 const Login = () => {
-    useEffect(() => {
-        document.title = 'CareConnect | Login';
-    }, []);
+  useEffect(() => {
+    document.title = "CareConnect | Login";
+  }, []);
 
-    return (
-        <div>
-            <LoginForm />
-        </div>
-    );
+  return (
+    <div className="fullscreen flex-center-x">
+      {/* Left Column */}
+      <div className="width-50 flex-center-xy bg-white">
+        <Image src="/logo500.png" className="login-logo" alt="Logo" />
+      </div>
+
+      {/* Right Column */}
+      <div className="width-50 flex-center-xy bg-teal-light">
+        <LoginFrom />
+      </div>
+    </div>
+  );
 };
 
 export default Login;

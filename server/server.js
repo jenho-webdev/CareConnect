@@ -1,26 +1,36 @@
-// Import express module.
+const { ApolloServer } = require('apollo-server-express')
+const { typeDefs, resolvers } = require('./Schemas')
 const express = require('express')
-// Import path module.
 const path = require ('path')
-// Require connection to MongoDB through Mongoose.
 const db = require('./config/connection')
-// Specify server listening port for production and development.
+// authMiddleWare needed to provide context to endpoints that require authorization.  
+const { authMiddleware } = require('./utils/auth');
+
 const PORT = process.env.PORT || 3001;
-// Initialize a new instance of the Express application.
 const app = express();
-// Set up parsing middleware
+// Context allows for all endpoints with context to verify users and have access to user data extracted from token by jwt.verify. 
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: authMiddleware, 
+})
+
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 
-// app.get('/test', (req, res) => {
-//     res.json({ working: true })
-// })
+const startApolloServer = async () => {
+    await server.start();
+    server.applyMiddleware({ app });
+    console.log('Successfully started Apollo server.')
 
-// Open connection to db.
-db.once('open', () => {
-    console.log('Connection to db successful')
-    // Start server.
-    app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-    }) 
-})
+    db.once('open', () => {
+        console.log('Connection to db successful')
+
+        app.listen(PORT, () => {
+            console.log(`Server running on port ${PORT}`);
+            console.log(`Access Apollo Sandbox at http://localhost:${PORT}${server.graphqlPath}`);
+        }) 
+    })
+};
+
+startApolloServer();

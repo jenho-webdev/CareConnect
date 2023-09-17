@@ -1,8 +1,8 @@
-// Require mongoose modules.
 const mongoose = require('mongoose');
-// Require schema module from mongoose.
 const { Schema } = mongoose;
-// Define User schema.
+// Require bcrypt for password hashing.
+const bcrypt = require('bcrypt');
+
 const userSchema = new Schema({
     firstName: {
         type: String,
@@ -18,21 +18,15 @@ const userSchema = new Schema({
         unique: true,
     },
     helpCircle: [{
-        // Expects _id of other user.
         type: Schema.Types.ObjectId,
-        // Specifies User model.
         ref: 'User'
     }],
     requests: [{
-        // Expects _id of other requests made by the user.
         type: Schema.Types.ObjectId,
-        // Specifies Request model.
         ref: 'Request'
     }],
     offers: [{
-        // Expects _id of requests made by other users.
         type: Schema.Types.ObjectId,
-        // Specifies Request model.
         ref: 'Request'
     }],
     password: {
@@ -41,7 +35,21 @@ const userSchema = new Schema({
         minlength: 8
     }
 })
-// Compile User schema into model.
+
+userSchema.pre('save', async function(next) {
+    // || this.isModified('password') needed if rest password feature added
+    if (this.isNew || this.isModified('password')) {
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+
+    next();
+})
+
+userSchema.methods.isPasswordCorrect = async function (password) {
+    return bcrypt.compare(password, this.password);
+};
+
 const User = mongoose.model('User', userSchema);
-// Export model.
+
 module.exports = User;
