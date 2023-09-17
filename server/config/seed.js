@@ -11,7 +11,8 @@ db.once('open', async () => {
         zip: "12345",
         helpCircle: [],
         requests: [],
-        offers: []
+        offers: [],
+        friendRequests: []
     });
     const user2 = new User({
         firstName: "Jane",
@@ -21,7 +22,8 @@ db.once('open', async () => {
         zip: "54321",
         helpCircle: [],
         requests: [],
-        offers: []
+        offers: [],
+        friendRequests: []
     });
     const user3 = new User({
         firstName: "Alice",
@@ -31,7 +33,8 @@ db.once('open', async () => {
         zip: "98765",
         helpCircle: [],
         requests: [],
-        offers: []
+        offers: [],
+        friendRequests: []
     });
 
     await user1.save();
@@ -44,11 +47,14 @@ db.once('open', async () => {
     user2.helpCircle.push(user1._id, user3._id);
     user3.helpCircle.push(user2._id);
 
-    // Save updated users to database
+    // user1 sends a friend request to user3.
+    user3.friendRequests.push(user1._id);
+
+    // Save updated users to database.
     await user1.save();
     await user2.save();
     await user3.save();
-    console.log('Updated helpCircle relationships.');
+    console.log('Updated helpCircle relationships and friend requests.');
 
     await Request.deleteMany();
 
