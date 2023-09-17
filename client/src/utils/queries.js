@@ -166,6 +166,18 @@ export const QUERY_MY_HELP_CIRCLE = gql`
   }
 `;
 
+export const QUERY_MY_FRIEND_REQUESTS = gql`
+  query getMyFriendRequests {
+    getMyFriendRequests {
+      _id
+      email
+      firstName
+      lastName
+      zip
+    }
+  }
+`;
+
 export const QUERY_ME = gql`
   query me {
     me {
