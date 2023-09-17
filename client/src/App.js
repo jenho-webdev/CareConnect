@@ -26,6 +26,7 @@ import Profile from "./pages/Profile"; //where all user's own request will be di
 import NotFound from "./pages/NotFound"; //where the user will be redirected to if they try to access a page that does not exist
 import RequestsCalendar from "./components/calendar/RequestsCalendar"; //where the user will be able to see all requests in a calendar view
 import CreateRequest from "./components/RequestForm"; //where the user will be able to see all requests in a calendar view
+
 // Styles
 import "./styles/main.sass";
 

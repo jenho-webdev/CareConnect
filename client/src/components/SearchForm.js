@@ -1,9 +1,11 @@
-import 'React' from React;
+import React from 'react';
 
 const SearchForm = () => {
     return (
-        <div>
-        </div>
+        <form>
+            <label htmlFor="search">Search:</label>
+            <input type="text" id="search" name="search" />
+        </form>
     );
 }
 
