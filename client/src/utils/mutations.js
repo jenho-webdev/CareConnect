@@ -7,6 +7,9 @@ export const LOGIN_USER = gql`
       foundUser {
         _id
         email
+        firstName
+        lastName
+        zip
       }
     }
   }
@@ -33,6 +36,7 @@ export const ADD_USER = gql`
         firstName
         lastName
         email
+        zip
       }
     }
   }

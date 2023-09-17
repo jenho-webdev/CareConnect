@@ -14,6 +14,7 @@ export const QUERY_USERS = gql`
 export const QUERY_USER_INFO = gql`
   query getUserById($_id: ID!) {
     getUserById(_id: $_id) {
+      _id
       firstName
       lastName
       zip

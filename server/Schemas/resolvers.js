@@ -81,7 +81,8 @@ const resolvers = {
                 const token = signToken(newUser);
                 return { token, newUser};
             } catch (error) {
-                console.log(error)
+                // throw new grapgql error
+                throw new AuthenticationError('User not found.');
             }
             
         },
