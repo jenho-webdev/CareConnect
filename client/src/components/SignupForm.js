@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
 import { Button, Input } from "@nextui-org/react";
+import { Navigate } from "react-router-dom";
 
 const SignupForm = () => {
   const [formState, setFormState] = useState({
@@ -54,6 +55,7 @@ const SignupForm = () => {
       const token = mutationResponse.data.signUp.token;
 
       Auth.login(token);
+      <Navigate to="/Home" />;
     } catch (e) {
       console.error(e);
       setShowAlert(true);
@@ -74,9 +76,9 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="container my-1">
+    <div className="flex-wrap my-1">
       <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row my-1 w-80 ">
           <Input
             isRequired
             name="firstName"
@@ -84,11 +86,11 @@ const SignupForm = () => {
             label="First Name:"
             placeholder="John"
             id="firstName"
-            className="max-w-xs shadow-lg"
+            className="min-w-full shadow-lg"
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row my-2">
           <Input
             isRequired
             name="lastName"
@@ -96,11 +98,11 @@ const SignupForm = () => {
             label="Last Name:"
             placeholder="Doe"
             id="lastName"
-            className="max-w-xs shadow-lg"
+            className="max-w-xs shadow-lg min-w-max"
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row my-2">
           <Input
             isRequired
             name="email"
@@ -108,11 +110,11 @@ const SignupForm = () => {
             label="Email:"
             placeholder="john.doe@gmail.com"
             id="email"
-            className="max-w-xs shadow-lg"
+            className="max-w-xs shadow-lg min-w-max"
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row  my-2">
           <Input
             isRequired
             placeholder="******"
@@ -120,7 +122,7 @@ const SignupForm = () => {
             type="password"
             label="Password:"
             id="pwd"
-            className="max-w-xs shadow-lg"
+            className="max-w-xs shadow-lg min-w-max"
             errorMessage={
               passwordValid
                 ? ""
@@ -131,7 +133,7 @@ const SignupForm = () => {
             onClear={() => console.log("input cleared")}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row  my-2">
           <Input
             placeholder="12345"
             name="zip"
@@ -143,16 +145,24 @@ const SignupForm = () => {
             onClear={() => console.log("input cleared")}
           />
         </div>
-        <div className="flex-row flex-end">
+        <div className="flex-row   ">
           <Button
             type="submit"
-            className="m-3 bg-gradient-to-tr from-teal-600 to-zinc-800 text-white shadow-lg"
+            className="w-full max-w-xs bg-gradient-to-tr from-teal-600 to-zinc-800 text-white shadow-lg"
           >
-            Submit
+            Create Account
           </Button>
-          <Button className="m-3  text-black shadow-lg">
-            <Link to="/login">← Go to Login</Link>
-          </Button>
+        </div>
+        <div className="flex-row  space-x-3 my-2">
+          <p className=" flex-0 font-medium text-gary">
+            Already have an account?{" "}
+          </p>
+          <Link
+            className=" flex-auto font-semibold text-gary underline hover:text-white"
+            to="/login"
+          >
+            Log in
+          </Link>
         </div>
         <div className="flex-row flex-end">
           {showAlert && (
