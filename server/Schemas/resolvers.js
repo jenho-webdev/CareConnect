@@ -91,6 +91,18 @@ const resolvers = {
                 throw new ApolloError(`Error fetching request by id: ${error.message}.`);
             }
         },
+        getMyFriendRequests: async (_, args, context) => {
+            if (!context.user) {
+                throw new AuthenticationError('You must be logged in to view your friend requests.');
+            }
+            try {
+                const user = await User.findOne({ _id: context.user._id })
+                    .populate('friendRequests', '_id firstName lastName email zip');
+                return user.friendRequests;
+            } catch (error) {
+                throw new ApolloError(`Error fetching friend requests: ${error.message}.`);
+            }
+        },
         me: async (_, args, context) => {
             try {
                 if (context.user) {
@@ -211,6 +223,48 @@ const resolvers = {
                 throw new AuthenticationError('Unauthorized request.');
             } catch (error) {
                 throw new ApolloError(`Error canceling help: ${error.message}.`);
+            }
+        },
+        sendFriendRequest: async (_, { targetUserId }, context) => {
+            try {
+                if (!context.user) {
+                    throw new AuthenticationError('You must be logged in to send friend requests.');
+                }
+
+                const targetUser = await User.findById(targetUserId);
+
+                if (!targetUser) {
+                    throw new ApolloError("User not found.");
+                }
+
+                await User.findByIdAndUpdate(targetUserId, {
+                    $push: { friendRequests: context.user._id }
+                });
+
+                return targetUser;
+            } catch (error) {
+                throw new ApolloError(`Error sending friend request: ${error.message}.`);
+            }
+        },
+        acceptFriendRequest: async (_, { requesterId }, context) => {
+            try {
+                if (!context.user) {
+                    throw new AuthenticationError('You must be logged in to accept friend requests.');
+                }
+
+                await User.findByIdAndUpdate(context.user._id, {
+                    $pull: { friendRequests: requesterId },
+                    $push: { helpCircle: requesterId }
+                });
+
+                await User.findByIdAndUpdate(requesterId, {
+                    $push: { helpCircle: context.user._id }
+                });
+
+                const updatedUser = await User.findById(context.user._id);
+                return updatedUser;
+            } catch (error) {
+                throw new ApolloError(`Error accepting friend request: ${error.message}.`);
             }
         }
     }

@@ -11,6 +11,7 @@ const typeDefs = gql`
     helpCircle: [User]
     requests: [Request]
     offers: [Request]
+    friendRequests: [User]
   }
 
   type Request {
@@ -36,6 +37,7 @@ const typeDefs = gql`
     getMyRequests: [Request]
     getMyHelpCircle: [User]
     getMyOffers: [Request]
+    getMyFriendRequests: [User]
     me: User
   }
 
@@ -59,6 +61,8 @@ const typeDefs = gql`
     ): Request
     offerHelp(requestId: ID!): Request
     cancelHelp(requestId: ID!): Request
+    sendFriendRequest(targetUserId: ID!): User
+    acceptFriendRequest(requesterId: ID!): User
   }
 
   type AuthSignUp {

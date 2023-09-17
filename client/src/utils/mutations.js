@@ -94,6 +94,30 @@ export const OFFER_HELP = gql`
   }
 `;
 
+export const SEND_FRIEND_REQUEST = gql`
+  mutation sendFriendRequest($targetUserId: ID!) {
+    sendFriendRequest(targetUserId: $targetUserId) {
+      _id
+      firstName
+      lastName
+      zip
+      email
+    }
+  }
+`;
+
+export const ACCEPT_FRIEND_REQUEST = gql`
+  mutation acceptFriendRequest($requesterId: ID!) {
+    acceptFriendRequest(requesterId: $requesterId) {
+      _id
+      email
+      firstName
+      lastName
+      zip
+    }
+  }
+`;
+
 export const CANCEL_HELP = gql`
   mutation cancelHelp($requestId: ID!) {
     cancelHelp(requestId: $requestId) {
