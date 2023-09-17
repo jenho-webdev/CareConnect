@@ -1,0 +1,54 @@
+/* Calendar.css */
+/* Here are some common class names and elements in react-big-calendar that you can customize: 
+Event Elements: 
+.rbc-event: Represents an event in the calendar. 
+.rbc-event-content: The content of the event. 
+.rbc-event-label: The label or title of the event. 
+.rbc-event-overlaps: Applied to events that overlap. 
+.rbc-event-continues-prior: Applied to multi-day events that continue from the previous day. 
+.rbc-event-continues-after: Applied to multi-day events that continue to the next day. 
+
+Day Cell Elements: 
+.rbc-day-slot: Represents a day cell in the calendar grid. 
+.rbc-day-bg: Represents the background of a day cell. 
+.rbc-today: Applied to the cell representing the current date. 
+.rbc-now: Applied to the current time indicator (if enabled). 
+
+Header Elements: 
+.rbc-header: Represents the header section of the calendar. 
+.rbc-date-cell: Represents a cell in the header containing the date. 
+.rbc-header-gutter: Represents the gutter area to the left of the header cells. 
+
+Toolbar Elements: 
+.rbc-toolbar: Represents the toolbar containing navigation buttons (prev, next, today) and view selection buttons.
+ .rbc-btn-group: Represents a group of buttons within the toolbar. 
+ 
+ View Elements: 
+ .rbc-month-view: Represents the month view. 
+ .rbc-week-view: Represents the week view. 
+ .rbc-day-view: Represents the day view. 
+ .rbc-agenda-view: Represents the agenda view.
+ 
+ Selection Elements: 
+ .rbc-selected: Applied to the currently selected date or time range. 
+ 
+ Pop-up Dialog Elements: 
+ .rbc-overlay: Represents the overlay of pop-up dialogs. 
+ .rbc-overlay-bg: Represents the background of the overlay. 
+ */
+
+
+/* customizing event styles */
+.rbc-toolbar button {
+    background-color: #ffffff;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Replace with your desired background color */
+}
+
+/* Style the active button with shadows */
+.toolbar-button.active {
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    /* Add a larger box-shadow for active button */
+}
