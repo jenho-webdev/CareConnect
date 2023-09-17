@@ -33,6 +33,10 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Request'
     }],
+    friendRequests: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     password: {
         type: String,
         required: true,
