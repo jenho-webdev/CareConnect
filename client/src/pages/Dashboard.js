@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 // Components
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import List from '../components/dashboard/List';
 
 const Dashboard = () => {
     useEffect(() => {
@@ -19,7 +20,6 @@ const Dashboard = () => {
             </main>
             <Footer />
         </div>
-
     );
 };
 
