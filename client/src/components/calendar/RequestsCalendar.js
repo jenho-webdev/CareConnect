@@ -60,13 +60,13 @@ export default function RequestsCalendar() {
   };
 
   return (
-    <div>
+    <div className="calendar">
       <Calendar
         localizer={localizer}
         defaultDate={new Date()}
         defaultView="month"
         events={events}
-        style={{ height: "50vh", width: "w-0.5" }}
+        style={{ height: "500px", width: "600px" }}
         startAccessor="start"
         endAccessor="end"
         eventPropGetter={eventStyleGetter} // Apply custom styles to events
