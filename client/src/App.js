@@ -74,7 +74,7 @@ function App() {
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/request/:requestId" element={<Request />} />
-                <Route path="/user/:username" element={<Profile />} />
+                <Route path="/user/:userId" element={<Profile />} />
                 <Route path="*" element={<NotFound />} />
                 <Route path="/calendar" element={<RequestsCalendar />} />
                 <Route path="/createrequest" element={<CreateRequest />} />

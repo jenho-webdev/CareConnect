@@ -50,7 +50,7 @@ export default function LoginForm() {
       const token = mutationRes.data.login.token;
       setShowAlert(false);
       Auth.login(token);
-      <Navigate to="/Home" />;
+      return <Navigate to="/dashboard" />;
     } catch (e) {
       console.error("An error occurred during login: ", e.message);
       setShowAlert(true);
@@ -70,56 +70,64 @@ export default function LoginForm() {
 
   return (
     <div className=" flex-wrap my-1">
-      <form onSubmit={handleSubmit}>
-        <div className="flex-row space-between my-2">
-          <h2 className="text-2xl font-bold">Sign In</h2>
-        </div>
-        <div className="flex-row space-between my-2">
-          <Input
-            isRequired
-            name="email"
-            type="email"
-            label="Email"
-            placeholder="john.doe@gmail.com"
-            id="email"
-            className="max-w-xs shadow-lg"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <Input
-            isRequired
-            placeholder="******"
-            name="password"
-            type="password"
-            label="Password"
-            id="pwd"
-            className="max-w-xs shadow-lg"
-            onChange={handleChange}
-            onClear={() => console.log("input cleared")}
-          />
-        </div>
-        <div className="flex-row flex-start">
-          <Button
-            type="submit"
-            className="m-3 bg-gradient-to-tr from-teal-600 to-zinc-800 text-white shadow-lg"
-          >
-            Submit
-          </Button>
-          <Button className=" m-3 text-black shadow-lg">
-            <Link to="/signup">← Create an account</Link>
-          </Button>
-        </div>
-        <div className="flex-row flex-end" role="alert">
-          {showAlert && (
-            <>
-              <div className=" alert text-white ext-sm font-bold px-4 py-4">
-                <p className="text-m font-bold text-red-400">Login Failed!</p>
-              </div>
-            </>
-          )}
-        </div>
-      </form>
+      {data ? (
+        <p>
+          Success! Redirecting to <Link to="/dashboard"> dashboard.</Link>
+        </p>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <div className="flex-row space-between my-2">
+            <h2 className="text-2xl font-bold">Sign In</h2>
+          </div>
+          <div className="flex-row space-between my-2">
+            <Input
+              isRequired
+              name="email"
+              type="email"
+              label="Email"
+              placeholder="john.doe@gmail.com"
+              id="email"
+              className="max-w-xs shadow-lg"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex-row space-between my-2">
+            <Input
+              isRequired
+              placeholder="******"
+              name="password"
+              type="password"
+              label="Password"
+              id="pwd"
+              className="max-w-xs shadow-lg"
+              onChange={handleChange}
+              onClear={() => console.log("input cleared")}
+            />
+          </div>
+          <div className="flex-row flex-start">
+            <Button
+              type="submit"
+              className="m-3 bg-gradient-to-tr from-teal-600 to-zinc-800 text-white shadow-lg"
+            >
+              Submit
+            </Button>
+            <Button className=" m-3 text-black shadow-lg">
+              <Link to="/signup">← Create an account</Link>
+            </Button>
+          </div>
+          <div className="flex-row flex-end" role="alert">
+            {(showAlert || error) && (
+              <>
+                <div className=" alert text-white ext-sm font-bold px-4 py-4">
+                  <p className="text-m font-bold text-red-400">
+                    {error.message}!
+                  </p>
+                </div>
+              </>
+            )}
+          </div>
+        </form>
+      )}
     </div>
   );
 }
