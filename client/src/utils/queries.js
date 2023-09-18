@@ -22,7 +22,7 @@ export const QUERY_USER_INFO = gql`
         _id
         firstName
         lastName
-      } 
+      }
       requests {
         _id
         location
@@ -114,14 +114,14 @@ export const QUERY_MY_REQUESTS = gql`
       requestText
       status
       owner {
-          _id
-          firstName
-          lastName
+        _id
+        firstName
+        lastName
       }
       participants {
-          _id
-          firstName
-          lastName
+        _id
+        firstName
+        lastName
       }
     }
   }
@@ -139,16 +139,16 @@ export const QUERY_MY_OFFERS = gql`
       status
       requestText
       owner {
-          _id
-          firstName
-          lastName
-          zip
+        _id
+        firstName
+        lastName
+        zip
       }
       participants {
-          _id
-          firstName
-          lastName
-          zip
+        _id
+        firstName
+        lastName
+        zip
       }
     }
   }
@@ -191,7 +191,7 @@ export const QUERY_ME = gql`
         firstName
         lastName
         zip
-      } 
+      }
       requests {
         _id
         location
@@ -199,6 +199,7 @@ export const QUERY_ME = gql`
         startTime
         endTime
         status
+        requestTitle
       }
       offers {
         _id
@@ -207,6 +208,7 @@ export const QUERY_ME = gql`
         startTime
         endTime
         status
+        requestTitle
       }
     }
   }
