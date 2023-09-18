@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { Button, Input } from "@nextui-org/react";
-import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function LoginForm() {
   const [formData, setFormData] = useState({
@@ -15,6 +15,7 @@ export default function LoginForm() {
   const [login, { error, data }] = useMutation(LOGIN_USER);
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const navigate = useNavigate(); // Use useNavigate hook
 
   //handle input field changes
   const handleChange = (event) => {
@@ -50,7 +51,10 @@ export default function LoginForm() {
       const token = mutationRes.data.login.token;
       setShowAlert(false);
       Auth.login(token);
-      return <Navigate to="/dashboard" />;
+      // Redirect to the dashboard
+      navigate("/dashboard");
+
+      
     } catch (e) {
       console.error("An error occurred during login: ", e.message);
       setShowAlert(true);
@@ -60,20 +64,12 @@ export default function LoginForm() {
         setAlertMessage(""); // Reset the message to an empty string
       }, 3000); // Adjust the time as needed (measured in milliseconds)
     }
-
-    // clear form values
-    setFormData({
-      email: "",
-      password: "",
-    });
   };
 
   return (
     <div className=" flex-wrap my-1">
       {data ? (
-        <p>
-          Success! Redirecting to <Link to="/dashboard"> dashboard.</Link>
-        </p>
+        <p>Success! Redirecting to dashboard.</p>
       ) : (
         <form onSubmit={handleSubmit}>
           <div className="flex-row space-between my-2">
