@@ -18,8 +18,29 @@ const Dashboard = () => {
     document.title = "CareConnect | My Dashboard";
   }, []);
   const { loading, data } = useQuery(QUERY_ME);
+  if (!Auth.loggedIn()) return <Navigate replace to="/login" />;
+
+  if (loading) return <div>Loading...</div>;
 
   const user = data?.me || {};
+
+  //sample events array that needed to pass into calendar component
+  // Event {
+  //   title: string,
+  //   start: Date,
+  //   end: Date,
+  //   allDay?: boolean
+  //   resource?: any,
+  // }
+
+  const calEvents = user.requests.map((request) => {
+    return {
+      title: request.requestTitle,
+      start: new Date(request.startTime),
+      end: new Date(request.endTime),
+      type: request.status,
+    };
+  });
 
   return (
     <div className="dashboard">
@@ -44,8 +65,14 @@ const Dashboard = () => {
 
         <div className="flex-row flex-center-xy">
           <div className="dashboard-column-left flex-center-xy">
-            <Calendar request={user.requests} />
+            <Calendar request={calEvents} />
           </div>
+
+          {/* <div className="flex-row flex-center-xy">
+            <div className="dashboard-column-left flex-center-xy">
+              <RequestList requests={user.requests} />
+            </div>
+          </div> */}
 
           <div className="dashboard-column-right flex-center-xy my-offers">
             <MyOffers />

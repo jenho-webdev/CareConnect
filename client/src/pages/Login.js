@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-
+import { Navigate } from "react-router-dom";
+import Auth from "../utils/auth";
 // Components
 import LoginFrom from "../components/LoginForm";
 
@@ -10,6 +11,7 @@ const Login = () => {
   useEffect(() => {
     document.title = "CareConnect | Login";
   }, []);
+  if (Auth.loggedIn()) return <Navigate replace to="/dashboard" />;
 
   return (
     <div className="fullscreen flex-center-x">
