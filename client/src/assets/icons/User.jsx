@@ -5,6 +5,7 @@ const SvgComponent = (props) => (
         width={800}
         height={800}
         viewBox="0 0 32 32"
+        fill="#31373d"
         {...props}
     >
         <title>{"user"}</title>
