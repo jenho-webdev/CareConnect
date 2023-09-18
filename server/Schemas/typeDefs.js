@@ -20,7 +20,6 @@ const typeDefs = gql`
     requestText: String!
     owner: User!
     location: String!
-    type: String!
     startTime: String!
     endTime: String!
     createdAt: String!
@@ -50,11 +49,10 @@ const typeDefs = gql`
       zip: String!
     ): AuthSignUp
     login(email: String!, password: String!): AuthLogin
-    cancelRequest(requestId: ID!): Request
+    updateRequestStatus(requestId: ID!, newStatus: String!): Request
     createRequest(
       requestTitle: String!
       location: String!
-      type: String!
       startTime: String!
       endTime: String!
       requestText: String!
