@@ -1,16 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Components
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import MyOffers from '../components/dashboard/MyOffers';
 import Calendar from '../components/calendar/RequestsCalendar';
+import Friends from '../components/dashboard/Friends';
 
 // Images
 import UserPhoto from '../assets/user-placeholder.jpg';
 import LocationIcon from '../assets/location-icon.jsx';
 
 const Dashboard = () => {
+    const [showFriends, setShowFriends] = useState(false);
+
+    const toggleFriendsDisplay = () => {
+        setShowFriends(!showFriends);
+    };
+
     useEffect(() => {
         document.title = 'CareConnect | My Dashboard';
     }, []);
@@ -18,6 +25,15 @@ const Dashboard = () => {
     return (
         <div className='dashboard'>
             <Header />
+
+            {showFriends && (
+                <div className="overlay" onClick={toggleFriendsDisplay}>
+                    <div className="friends-popup">
+                        <Friends />
+                    </div>
+                </div>
+            )}
+
             <main className="full-width">
                 <div className="user-banner flex-row flex-center-y">
                     <img src={UserPhoto} alt="User" />
@@ -30,7 +46,7 @@ const Dashboard = () => {
                     </div>
                     <div className='user-friends'>
                         {/* Friends button to view friends list & requests*/}
-                        <button>Friends</button>
+                        <button onClick={toggleFriendsDisplay}>Friends</button>
                     </div>
                 </div>
 
