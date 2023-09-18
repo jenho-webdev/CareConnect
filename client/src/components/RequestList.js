@@ -32,10 +32,7 @@ const columns = [
   { key: "actions", name: "actions", label: "ACTIONS" }, //7
 ];
 
-
-
-
-export default function RequestList(requests) {
+export default function RequestList({ requests }) {
   const renderCell = useCallback((request, columnKey) => {
     const cellValue = request[columnKey];
 
@@ -45,7 +42,7 @@ export default function RequestList(requests) {
           <div className="flex flex-col">
             <p className="text-bold text-sm capitalize">{cellValue}</p>
             <p className="text-bold text-sm capitalize text-default-400">
-              {request.title}
+              {request.requestTitle}
             </p>
           </div>
         );
@@ -146,7 +143,7 @@ export default function RequestList(requests) {
       </TableHeader>
       <TableBody items={requests}>
         {(item) => (
-          <TableRow key={item.id}>
+          <TableRow key={item._id}>
             {(columnKey) => (
               <TableCell>{renderCell(item, columnKey)}</TableCell>
             )}

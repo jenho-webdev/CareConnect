@@ -32,11 +32,13 @@ const Dashboard = () => {
 
     if (loading) return <div>Loading...</div>;
 
+    // Destructure the user data from the query
     const user = data?.me || {};
-    const requests = data.me.requests || [];
-    const offers = data.me.offers || [];
+    // const requests = data.me.requests || [];
+    // const offers = data.me.offers || [];
+    // const combinedEventsArray = [...requests, ...offers];
 
-    //sample events array that needed to pass into calendar component
+    //* Sample events array that needed to pass into calendar component
     // Event {
     //   title: string,
     //   start: Date,
@@ -45,7 +47,9 @@ const Dashboard = () => {
     //   resource?: any,
     // }
 
-    const calEvents = requests.map((request) => {
+    //repackage the data from the query into the format that the calendar component needs
+    {/* 
+    const reqEvents = combinedEventsArray.map((request) => {
         return {
         title: `${request.requestTitle}`,
         start: new Date(request.startTime),
@@ -53,13 +57,14 @@ const Dashboard = () => {
         type: request.status,
         };
     });
+    */}
 
-    console.log(calEvents);
 
     return (
         <div className="dashboard">
             <Header />
 
+            {/* Friends List/Friend Request */}
             {showFriends && (
                 <div className="overlay" onClick={toggleFriendsDisplay}>
                     <div className="friends-popup shadow-harsh">
@@ -69,6 +74,7 @@ const Dashboard = () => {
             )}
 
             <main className="full-width flex-column flex-center-y">
+                {/* User Banner */}
                 <div className="user-banner flex-row flex-center-y">
                     <img src={UserPhoto} alt="User" className="shadow"/>
                     <div className="user-details">
@@ -83,20 +89,16 @@ const Dashboard = () => {
                     </div>
                 </div>
                 
-
+                {/* Dashboard Content */}
                 <div className="flex-row flex-center-xy">
+                    {/* Calendar */}
                     <div className="dashboard-column-left flex-center-xy">
-                        <Calendar events={calEvents} />
+                        <Calendar /> {/* events={reqEvents} */}
                     </div>
 
-        {/* <div className="flex-row flex-center-xy">
-            <div className="dashboard-column-left flex-center-xy">
-            <RequestList requests={user.requests} />
-            </div>
-        </div> */}
-
+                    {/* My Offers */}
                     <div className="dashboard-column-right flex-center-xy my-offers shadow">
-                        <MyOffers />
+                        <MyOffers /> {/* requests={requests} */} 
                     </div>
                 </div>
             </main>
