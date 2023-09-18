@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 // Components
-import LoginFrom from "../components/loginForm";
+import LoginFrom from "../components/LoginForm";
 
 // NextUI components
 import { Image } from "@nextui-org/react";

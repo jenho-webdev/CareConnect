@@ -1,1 +1,97 @@
 // _components.sass
+
+// Header
+header
+    background-color: $color-teal-dark
+    height: 100px
+    min-width: 100vw
+
+    svg
+        height: 100%
+        padding: 10px
+
+    a
+        color: $color-white
+        text-decoration: none
+        font-size: 25px
+        font-weight: 700
+        padding: 0 10px
+
+    label
+        color: $color-white
+        font-size: 20px
+        font-weight: 400
+        padding: 0 10px
+
+// Footer
+footer
+    min-width: 100vw
+
+    a
+        padding: 0 10px
+
+// Calendar
+.calendar
+    background-color: $color-pink-light
+    padding: 20px
+    border-radius: $border-radius
+
+    .rbc-off-range-bg,
+    .rbc-header,
+    .rbc-month-view,
+    .rbc-month-row,
+    .rbc-row-bg div,
+    .rbc-today,
+    .rbc-row-content button,
+    .rbc-time-header,
+    .rbc-time-header-content,
+    .rbc-time-content,
+    .rbc-time-slot,
+    .rbc-timeslot-group,
+    .rbc-time-view
+        border-color: $color-black
+
+    .rbc-off-range-bg
+        background-color: $color-pink-dark
+
+    .rbc-today
+        background-color: $color-white
+
+// My Offers
+.my-offers
+    background-color: $color-pink-dark
+    padding: 20px
+    border-radius: $border-radius
+    overflow: auto
+
+    h1
+        font-size: 30px
+        font-weight: 700
+        text-align: center
+
+    h3
+        font-size: 20px
+        font-weight: 700
+        text-align: center
+
+    .my-offers-request
+        background-color: $color-pink-light
+        padding: 10px
+        border-radius: 10px
+        width: 270px
+        margin: 10px
+
+    h2
+        font-size: 16px
+        font-weight: 700
+
+// Hide Scrollbar
+.my-offers::-webkit-scrollbar-thumb
+    background-color: transparent
+
+.my-offers::-webkit-scrollbar-track
+    background-color: transparent
+
+.my-offers::-webkit-scrollbar
+    width: 0.1rem
+    height: 0.1rem
