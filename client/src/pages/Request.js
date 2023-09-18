@@ -1,52 +1,31 @@
-import React, { useEffect } from 'react';
-
-// Components
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React, { useEffect, useState } from "react";
+import RequestForm from "../components/RequestForm";
 
 const Request = () => {
+  useEffect(() => {
+    document.title = "CareConnect | "; // TODO: Pass in request title
+  }, []);
 
-    //! Dummy data
-    const request = [
-        {
-            id: 1,
-            title: 'Request 1',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        },
-        {
-            id: 2,
-            title: 'Request 2',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        },
-        {
-            id: 3,
-            title: 'Request 3',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-        }
-    ];
+  const [createBtnState, setCreateBtnState] = useState(false);
+
+  return (
+    <div>
+      {/* TODO: 
+                 A outer container for the request form and other components (if any) to goes inside
+                
+                RequestsList component ( A list that list all the global requests)
+                    -A "filter" dropdown to filter the requests by "my request" and "all requests"
+                    -Sign Up Button (if not creator of request) to offer help to the request 
+                    - A Delete Button (if creator of request) to delete the request(row)
+                    -Edit Button (if creator of request) to edit the request(row)
 
 
+            */}
 
-
-
-    useEffect(() => {
-        document.title = 'CareConnect | '; // TODO: Pass in request title
-    }, []);
-
-    return (
-        <div>
-            <Header />
-            <main>
-                <h1>{request.title}</h1>
-                <p>{request.description}</p>
-                {/* Other request details */}
-                <button type="button">
-                    Sign Up
-                </button>
-            </main>
-            <Footer />
-        </div>
-    );
+      {/* if create new request button clicked open the RequestForm */}
+      {createBtnState && <RequestForm />}
+    </div>
+  );
 };
 
 export default Request;
