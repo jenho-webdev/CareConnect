@@ -63,7 +63,7 @@ export default function RequestsCalendar({ events }) {
   };
 
   return (
-    <div className="calendar">
+    <div className="calendar shadow">
       <Calendar
         localizer={localizer}
         defaultDate={new Date()}
