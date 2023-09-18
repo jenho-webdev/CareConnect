@@ -51,10 +51,7 @@ export default function LoginForm() {
       const token = mutationRes.data.login.token;
       setShowAlert(false);
       Auth.login(token);
-      // Redirect to the dashboard
-      navigate("/dashboard");
-
-      
+      return navigate("/dashboard"); // Use navigate function instead of redirect
     } catch (e) {
       console.error("An error occurred during login: ", e.message);
       setShowAlert(true);

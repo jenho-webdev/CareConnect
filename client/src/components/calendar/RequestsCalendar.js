@@ -3,6 +3,14 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "./calendar.css";
 
+// Event {
+//   title: string,
+//   start: Date,
+//   end: Date,
+//   allDay?: boolean
+//   resource?: any,
+// }
+
 export default function RequestsCalendar({ events }) {
   const localizer = momentLocalizer(moment);
 
@@ -12,18 +20,32 @@ export default function RequestsCalendar({ events }) {
 
     // Set background color based on event type
     switch (event.type) {
-      case "pending-request":
-        backgroundColor = "#F56565"; // Customize with your desired color
+      case "Open" || "Pending":
+        backgroundColor = "#667EEA";
+        if (isSelected) {
+          backgroundColor = "#44549e";
+        }
         break;
-      case "accepted-request":
-        backgroundColor = "#38B2AC"; // Customize with your desired color
+      case "Accepted" || "Assigned":
+        backgroundColor = "#38B2AC";
+        if (isSelected) {
+          backgroundColor = "#236b68";
+        }
         break;
-      case "accepted-offer":
-        backgroundColor = "#667EEA"; // Customize with your desired color
+      case "Closed" || "Completed":
+        backgroundColor = "#535a63";
+        if (isSelected) {
+          backgroundColor = "#303338";
+        }
         break;
-      // Add more cases for other event types
+      case "In-Progress":
+        backgroundColor = "#de9921";
+        if (isSelected) {
+          backgroundColor = "#875e16";
+        }
+        break;
       default:
-        backgroundColor = "#A0AEC0"; // Default color for unknown types
+        backgroundColor = "#43756a";
         break;
     }
 
