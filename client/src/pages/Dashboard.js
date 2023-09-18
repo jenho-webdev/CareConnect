@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import MyOffers from "../components/dashboard/MyOffers";
 import Calendar from "../components/calendar/RequestsCalendar";
 import Friends from '../components/dashboard/Friends';
+import Loading from "../components/dashboard/Loading";
 
 // Utils
 import Auth from "../utils/auth";
@@ -30,7 +31,7 @@ const Dashboard = () => {
     const { loading, data } = useQuery(QUERY_ME);
     if (!Auth.loggedIn()) return <Navigate replace to="/login" />;
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <Loading />
 
     // Destructure the user data from the query
     const user = data?.me || {};
