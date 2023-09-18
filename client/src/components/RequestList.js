@@ -3,7 +3,6 @@ import React, { useCallback } from "react";
 import { Link } from "react-router-dom";
 import {
   Tooltip,
-  Avatar,
   Chip,
   Table,
   TableHeader,
@@ -24,7 +23,6 @@ const statusColorMap = {
 
 const columns = [
   { key: "requestTitle", name: "requestTitle", label: "TITLE" }, //1
-  { key: "description", name: "description", label: "DESCRIPTION" }, //2
   { key: "location", name: "location", label: "LOCATION" }, //3
   { key: "startTime", name: "startTime", label: "Start Time" }, //4
   { key: "endTime", name: "endTime", label: "End TIME" }, //5
@@ -36,14 +34,21 @@ export default function RequestList({ requests }) {
   const renderCell = useCallback((request, columnKey) => {
     const cellValue = request[columnKey];
 
+    // Define options for formatting the date and time
+    const options = {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZoneName: "short",
+    };
+
     switch (columnKey) {
       case "requestTitle":
         return (
           <div className="flex flex-col">
             <p className="text-bold text-sm capitalize">{cellValue}</p>
-            <p className="text-bold text-sm capitalize text-default-400">
-              {request.requestTitle}
-            </p>
           </div>
         );
       case "location":
@@ -76,46 +81,30 @@ export default function RequestList({ requests }) {
             {request.status}
           </Chip>
         );
-      case "description":
-        return (
-          <div className="flex flex-col">
-            <p className="text-bold text-sm capitalize">{cellValue}</p>
-          </div>
-        );
       case "startTime":
+        const startDate = new Date(request.startTime);
+        const formattedStart = startDate.toLocaleTimeString("en-US", options);
+
         return (
           <div className="flex flex-col">
             <span className="text-bold text-sm capitalize">
-              {request.startTime}
+              {formattedStart}
             </span>
           </div>
         );
       case "endTime":
+        const endDate = new Date(request.startTime);
+        const formattedEnd = endDate.toLocaleTimeString("en-US", options);
         return (
           <div className="flex flex-col">
-            <span className="text-bold text-sm capitalize">
-              {request.endTime}
-            </span>
+            <span className="text-bold text-sm capitalize">{formattedEnd}</span>
           </div>
         );
-
-      case "participants":
-        return (
-          <div className="flex items-center gap-2">
-            {request.participants.map((participant) => (
-              <Avatar
-                key={participant._id}
-                src={`https://i.pravatar.cc/150?u=${participant._id}`}
-              />
-            ))}
-          </div>
-        );
-
       case "actions":
         return (
           <div className="relative flex items-center gap-2">
             <Tooltip content="Details">
-              <Link to={`/request/${request.id}`}>
+              <Link to={`/request/${request._id}`}>
                 {/* Pass the request object as state */}
                 <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                   <EyeIcon />
