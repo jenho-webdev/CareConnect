@@ -1,16 +1,21 @@
 // _animations.sass
 
 @keyframes loadingEllipsis
-    0%, 100%
+    0%,
+    100%
+        content: "\00a0\00a0\00a0"
+
+    25%
         content: ".\00a0\00a0"
 
-    33%
+    50%
         content: "..\00a0"
 
-    66%
+    75%
         content: "..."
 
 .ellipsis-animation::after
     display: inline-block
     animation: loadingEllipsis .5s infinite
     content: ""
+    font-family: monospace

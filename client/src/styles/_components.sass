@@ -24,22 +24,28 @@ header
         font-weight: 700
         padding: 0 10px
 
-    label
-        color: $color-white
-        font-size: 20px
-        font-weight: 400
-        padding: 0 10px
-
     .navbar
         width: 450px
 
-    form
-        width: 280px
+.search-form
+    background-color: $color-white
+    border-radius: $border-radius
+    width: 200px
 
-        input
-            padding: 5px
-            width: 200px
-            margin: 0 10px
+    svg
+        height: 20px
+        width: 20px
+        margin-left: 10px
+
+    input
+        background-color: transparent
+        width: 150px
+        border: none
+        font-size: 16px
+        color: $color-black
+
+        &:focus
+            outline: none
 
 // Footer
 footer
@@ -83,6 +89,22 @@ footer
     border-radius: $border-radius
     overflow: auto
     cursor: default
+    overflow-x: hidden
+
+    // Scrollbar
+    scrollbar-width: auto
+    scrollbar-color: #85959d00 #ffffff00
+
+    &::-webkit-scrollbar
+        width: 12px
+
+    &::-webkit-scrollbar-track
+        background: #ffffff00
+        margin: 10px
+
+    &::-webkit-scrollbar-thumb
+        background-color: #9eb4c0
+        border-radius: 10px
 
     h1
         font-size: 30px
@@ -105,27 +127,6 @@ footer
         font-size: 16px
         font-weight: 700
 
-// Hide Scrollbar
-.my-offers::-webkit-scrollbar-thumb
-    background-color: transparent
-
-.my-offers::-webkit-scrollbar-track
-    background-color: transparent
-
-.my-offers::-webkit-scrollbar
-    width: 0.1rem
-    height: 0.1rem
-
-.friends-popup::-webkit-scrollbar-thumb
-    background-color: transparent
-
-.friends-popup::-webkit-scrollbar-track
-    background-color: transparent
-
-.friends-popup::-webkit-scrollbar
-    width: 0.1rem
-    height: 0.1rem
-
 // Friends List Pop-Up
 .friends-popup
     background-color: $color-white
@@ -137,6 +138,21 @@ footer
     width: 400px
     cursor: default
 
+    // Scrollbar
+    scrollbar-width: auto
+    scrollbar-color: #85959d00 #ffffff00
+
+    &::-webkit-scrollbar
+        width: 12px
+
+    &::-webkit-scrollbar-track
+        background: #ffffff00
+        margin: 10px
+
+    &::-webkit-scrollbar-thumb
+        background-color: #9eb4c0
+        border-radius: 10px
+
     h1
         font-size: 30px
         font-weight: 700
@@ -147,8 +163,8 @@ footer
         width: 80%
 
     svg
-        height: 35px
-        width: 35px
+        height: 40px
+        width: 40px
         margin: 10px
         cursor: pointer
 
@@ -162,4 +178,5 @@ footer
 
 .loading
     font-size: 30px
+    font-weight: 700
     color: $color-teal-dark
