@@ -143,23 +143,24 @@ const resolvers = {
                 throw new ApolloError(`Error during login: ${error.message}.`);
             }
         },
-        deleteRequest: async (_, { requestId }, context) => {
+        cancelRequest: async (_, { requestId }, context) => {
             try {
+ 
                 if (context.user) {
-                    const deletedRequest = await Request.findOneAndDelete({
-                        _id: requestId,
-                        requestAuthor: context.user.email,
-                    });
-        
-                    await User.findOneAndUpdate(
-                        { _id: context.user._id },
-                        { $pull: { requests: deletedRequest._id } }
+                    const cancelledRequest = await Request.findOneAndUpdate(
+                        { 
+                            _id: requestId, 
+                            owner: context.user._id 
+                        },
+                        { status: "cancelled" },
+                        { new: true }
                     );
-                    return deletedRequest;
+        
+                    return cancelledRequest;
                 }
                 throw new AuthenticationError('Unauthorized request.');
             } catch (error) {
-                throw new ApolloError(`Error deleting request: ${error.message}.`);
+                throw new ApolloError(`Error updating request status to cancelled: ${error.message}.`);
             }
         },
         createRequest: async (_, { requestTitle, location, type, startTime, endTime, requestText }, context) => {
@@ -171,7 +172,7 @@ const resolvers = {
                         type,
                         startTime,
                         endTime,
-                        status: "available",
+                        status: "pending",
                         requestText,
                         owner: context.user._id
                     });
