@@ -9,9 +9,11 @@ import Logo from '../assets/logo-no-text.jsx';
 
 const Header = () => {
     return (
-        <header className='flex-row flex-center-xy width-100'>
-            <Logo />
-            <Navbar />
+        <header className='flex-row flex-center-xy full-width'>
+            <div className="logo">
+                <Logo />
+            </div>
+            <Navbar className="navbar flex-center-x"/>
             <SearchForm />
         </header>
     );

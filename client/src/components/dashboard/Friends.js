@@ -2,6 +2,7 @@ import React from 'react';
 
 // Components
 import FriendCard from './FriendCard';
+import FriendRequestCard from './FriendRequestCard';
 
 const Friends = (props) => {
     return (
@@ -16,11 +17,10 @@ const Friends = (props) => {
             </div>
             <h1>Friend Requests</h1>
             <div className='friend-requests'>
-                <FriendCard />
-                <FriendCard />
-                <FriendCard />
-                <FriendCard />
-                <FriendCard />
+                <FriendRequestCard />
+                <FriendRequestCard />
+                <FriendRequestCard />
+                <FriendRequestCard />
             </div>
         </div>
     );

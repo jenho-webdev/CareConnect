@@ -4,7 +4,7 @@ class Navbar extends React.Component {
   render() {
     return (
       <nav className="navbar">
-        <ul className="navbar-list flex-row">
+        <ul className="navbar-list flex-row flex-center-xy">
           <li className="navbar-item">
             <a href="/" className="navbar-link">Home</a>
           </li>
