@@ -48,7 +48,6 @@ Toolbar Elements:
 
 /* Style the active button with shadows */
 .toolbar-button.active {
-
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     /* Add a larger box-shadow for active button */
 }

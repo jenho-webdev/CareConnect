@@ -21,8 +21,9 @@ const Offer = () => {
     */
 
     return (
-        <div>
-            <h2>Offer Title</h2>
+        <div className='my-offers-request'>
+            <h2>Request User</h2>
+            <p>Request Title</p>
         </div>
     );
 }

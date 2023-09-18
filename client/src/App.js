@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //import React and Apollo dependencies
 import {
@@ -11,7 +11,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 
 // CSS libraries/components/.css files
-import { NextUIProvider} from "@nextui-org/react";
+import { NextUIProvider } from "@nextui-org/react";
 import "./App.css";
 
 // Pages
@@ -33,26 +33,30 @@ import "./styles/main.sass";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      //If a token exists, it's included as a bearer token in the request headers.
+      //if not, return an empty string as the token.
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
 
+//Create an instance of Apollo Client by combining the authLink and httpLink using the concat method. This configured
+//client will use the specified HTTP link and add the authorization header for authenticated requests.
+
 const client = new ApolloClient({
-  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
+  link: authLink.concat(httpLink), // Combine the authentication link and HTTP link
+  cache: new InMemoryCache(), // Use an in-memory cache to store GraphQL data
 });
 
 function App() {

@@ -60,7 +60,7 @@ export default function RequestsCalendar() {
   };
 
   return (
-    <div className="home-calendar">
+    <div className="calendar">
       <Calendar
         localizer={localizer}
         defaultDate={new Date()}
