@@ -66,7 +66,7 @@ db.once('open', async () => {
             type: "Ride",
             startTime: "2023-09-15T15:30:00",
             endTime: "2023-09-15T16:30:00",
-            status: "Open",
+            status: "pending",
             owner: user1._id,
             participants: [user2._id]
         },
@@ -77,7 +77,7 @@ db.once('open', async () => {
             type: "Meals",
             startTime: "2023-09-16T12:00:00",
             endTime: "2023-09-16T13:00:00",
-            status: "Closed", 
+            status: "pending", 
             owner: user2._id, 
             participants: [user1._id, user3._id]
         },
@@ -88,7 +88,7 @@ db.once('open', async () => {
             type: "Elderly Tech Support",
             startTime: "2023-09-17T10:00:00",
             endTime: "2023-09-17T11:00:00",
-            status: "Open",
+            status: "pending",
             owner: user3._id, 
             participants: [user1._id]
         },
