@@ -8,6 +8,7 @@ import Calendar from "../components/calendar/RequestsCalendar";
 import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
 import { Navigate } from "react-router-dom";
+import RequestList from "../components/RequestList";
 
 // Images
 import UserPhoto from "../assets/user-placeholder.jpg";
@@ -22,9 +23,11 @@ const Dashboard = () => {
 
   if (loading) return <div>Loading...</div>;
 
+  //destructure the user data from the query
   const user = data?.me || {};
   const requests = data.me.requests || [];
   const offers = data.me.offers || [];
+  const combinedEventsArray = [...requests, ...offers];
 
   //sample events array that needed to pass into calendar component
   // Event {
@@ -35,7 +38,8 @@ const Dashboard = () => {
   //   resource?: any,
   // }
 
-  const calEvents = requests.map((request) => {
+  //repackage the data from the query into the format that the calendar component needs
+  const reqEvents = combinedEventsArray.map((request) => {
     return {
       title: `${request.requestTitle}`,
       start: new Date(request.startTime),
@@ -43,8 +47,6 @@ const Dashboard = () => {
       type: request.status,
     };
   });
-
-  console.log(calEvents);
 
   return (
     <div className="dashboard">
@@ -69,14 +71,9 @@ const Dashboard = () => {
 
         <div className="flex-row flex-center-xy">
           <div className="dashboard-column-left flex-center-xy">
-            <Calendar events={calEvents} />
+            {/* <Calendar events={reqEvents} /> */}
+            <RequestList requests={requests} />
           </div>
-
-          {/* <div className="flex-row flex-center-xy">
-            <div className="dashboard-column-left flex-center-xy">
-              <RequestList requests={user.requests} />
-            </div>
-          </div> */}
 
           <div className="dashboard-column-right flex-center-xy my-offers">
             <MyOffers />
