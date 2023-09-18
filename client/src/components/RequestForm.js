@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 import { ADD_REQUEST } from "../utils/mutations";
 import { Button, Input, Textarea } from "@nextui-org/react";
 
 const RequestForm = () => {
-  const [request, setRequest] = useState({
+  const initialRequestState = {
     requestTitle: "",
     streetAddress: "",
     city: "",
@@ -16,12 +16,13 @@ const RequestForm = () => {
     startDateTime: "",
     endDateTime: "",
     requestText: "",
-  });
+  };
 
+  const [request, setRequest] = useState(initialRequestState);
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
-
   const [createRequest, { error }] = useMutation(ADD_REQUEST);
+  const navigate = useNavigate(); // Use useNavigate hook
 
   // Check if the event time is valid
   const isEventTimeValid = () => {
@@ -34,8 +35,6 @@ const RequestForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    let eventStart = "";
-    let eventEnd = "";
     // Combine the separate address fields into a single "location" value
     const { streetAddress, city, state, zip } = request;
     const combinedLocation = `${streetAddress}, ${city}, ${state} ${zip}`;
@@ -51,10 +50,6 @@ const RequestForm = () => {
       }, 3000); // Adjust the time as needed (measured in milliseconds)
       return;
     }
-
-    // Use eventStart and eventEnd in your logic
-    console.log("Event Start:", eventStart);
-    console.log("Event End:", eventEnd);
 
     try {
       const mutationResponse = await createRequest({
@@ -75,7 +70,9 @@ const RequestForm = () => {
         return;
       }
 
-      setRequest("");
+      // After form submission, reset the state to its initial values
+      setRequest(initialRequestState);
+      return navigate("/dashboard"); // Use navigate function instead of redirect
     } catch (e) {
       console.error(e);
       setShowAlert(true);
@@ -209,6 +206,20 @@ const RequestForm = () => {
               {error.message}
             </div>
           )}
+          <div className="flex-row my-5 justify-center">
+            <p></p>
+          </div>
+          <div className="flex-row flex-end" role="alert">
+            {(showAlert || error) && (
+              <>
+                <div className=" alert text-white ext-sm font-bold px-4 py-4">
+                  <p className="text-m font-bold text-red-400">
+                    {error.message}!
+                  </p>
+                </div>
+              </>
+            )}
+          </div>
         </form>
       ) : (
         <div className="justify-center">
