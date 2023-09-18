@@ -26,7 +26,6 @@ export const QUERY_USER_INFO = gql`
       requests {
         _id
         location
-        type
         startTime
         endTime
         status
@@ -39,7 +38,6 @@ export const QUERY_USER_INFO = gql`
       offers {
         _id
         location
-        type
         startTime
         endTime
         status
@@ -67,7 +65,6 @@ export const QUERY_REQUESTS = gql`
       owner
       createdAt
       location
-      type
       startTime
       endTime
       status
@@ -85,7 +82,6 @@ export const QUERY_SINGLE_REQUEST = gql`
       startTime
       endTime
       location
-      type
       status
       createdAt
       owner {
@@ -108,7 +104,6 @@ export const QUERY_MY_REQUESTS = gql`
       _id
       requestTitle
       location
-      type
       startTime
       endTime
       requestText
@@ -133,7 +128,6 @@ export const QUERY_MY_OFFERS = gql`
       _id
       requestTitle
       location
-      type
       startTime
       endTime
       status
@@ -195,7 +189,6 @@ export const QUERY_ME = gql`
       requests {
         _id
         location
-        type
         startTime
         endTime
         status
@@ -204,7 +197,6 @@ export const QUERY_ME = gql`
       offers {
         _id
         location
-        type
         startTime
         endTime
         status
