@@ -50,7 +50,7 @@ const typeDefs = gql`
       zip: String!
     ): AuthSignUp
     login(email: String!, password: String!): AuthLogin
-    deleteRequest(requestId: ID!): Request
+    cancelRequest(requestId: ID!): Request
     createRequest(
       requestTitle: String!
       location: String!

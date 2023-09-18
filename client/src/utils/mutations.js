@@ -78,10 +78,15 @@ export const ADD_REQUEST = gql`
   }
 `;
 
-export const DELETE_REQUEST = gql`
-  mutation deleteRequest($requestId: ID!) {
-    deleteRequest(requestId: $requestId) {
+export const CANCEL_REQUEST = gql`
+  mutation cancelRequest($requestId: ID!) {
+    cancelRequest(requestId: $requestId) {
       _id
+      status
+      owner {
+        _id
+      }
+      requestTitle
     }
   }
 `;
