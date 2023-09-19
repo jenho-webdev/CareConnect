@@ -19,6 +19,10 @@ GitHub Repo: [![Github Repo](https://img.shields.io/badge/GitHub_Project_Board-D
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+![PWA](https://img.shields.io/badge/PWA-black?style=for-the-badge&logo=JSON%20web%20tokens)
+![NEXTUI](https://img.shields.io/badge/NEXTUI-black?style=for-the-badge&logo=JSON%20web%20tokens)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+
 
 ## Description
 
@@ -87,7 +91,10 @@ Have a professional README (with unique name, description, technologies used, sc
 ![alt text](assets/images/ScreenShot8.png)
 ![alt text](assets/images/ScreenShot9.png)
 ![alt text](assets/images/ScreenShot10.png)
-
+![alt text](assets/images/ScreenShot11.png)
+![alt text](assets/images/ScreenShot12.png)
+![alt text](assets/images/install_local.png)
+![alt text](assets/images/PWA_logo.png)
 
 ## Colaborators
 
