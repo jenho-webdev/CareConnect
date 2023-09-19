@@ -99,11 +99,20 @@ Have a professional README (with unique name, description, technologies used, sc
 ## Colaborators
 
 Contributor Profiles:
+
+Front-end: 
 [![Chandler Chilvers](https://img.shields.io/badge/Github-cwchilvers-blue?style=flat&logo=GitHub&link=https://github.com/cwchilvers/)](https://github.com/cwchilvers)
-[![Jorge Duarte](https://img.shields.io/badge/Github-saduhub-blue?style=flat&logo=GitHub&link=https://github.com/cwchilvers/)](https://github.com/saduhub)
+<br>
 [![Jen Ho](https://img.shields.io/badge/Github-jenho--webdev-purple?style=flat&logo=GitHub&link=https://github.com/jenho-webdev)](https://github.com/jenho-webdev)
-[![Kimberly Collins](https://img.shields.io/badge/Github-Kimberlyc1904-blue?style=flat&logo=GitHub&link=Kimberlyc1904)](https://github.com/Kimberlyc1904)
+Back-end: 
+[![Jorge Duarte](https://img.shields.io/badge/Github-saduhub-blue?style=flat&logo=GitHub&link=https://github.com/cwchilvers/)](https://github.com/saduhub)
+
+Features and API research:
 [![jedichang99](https://img.shields.io/badge/Github-Kimberlyc1904-blue?style=flat&logo=GitHub&link=Kimberlyc1904)](https://github.com/jedichang99)
+
+Documentations:
+[![Kimberly Collins](https://img.shields.io/badge/Github-Kimberlyc1904-blue?style=flat&logo=GitHub&link=Kimberlyc1904)](https://github.com/Kimberlyc1904)
+
 
 ## Sources
 ```
