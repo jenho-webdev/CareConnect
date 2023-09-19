@@ -72,7 +72,7 @@ const RequestForm = () => {
 
       // After form submission, reset the state to its initial values
       setRequest(initialRequestState);
-      return navigate("/dashboard"); // Use navigate function instead of redirect
+      return navigate("/"); // Use navigate function instead of redirect
     } catch (e) {
       console.error(e);
       setShowAlert(true);
