@@ -118,10 +118,10 @@ Front-end:
 [![Jen Ho](https://img.shields.io/badge/Github-jenho--webdev-purple?style=flat&logo=GitHub&link=https://github.com/jenho-webdev)](https://github.com/jenho-webdev)
 <br>
 Back-end: 
-[![Jorge Duarte](https://img.shields.io/badge/Github-saduhub-blue?style=flat&logo=GitHub&link=https://github.com/cwchilvers/)](https://github.com/saduhub)
+[![Jorge Duarte](https://img.shields.io/badge/Github-saduhub-blue?style=flat&logo=GitHub&link=https://github.com/saduhub/)](https://github.com/saduhub)
 <br>
 Features and API research:
-[![jedichang99](https://img.shields.io/badge/Github-jedichang99-blue?style=flat&logo=GitHub&link=Kimberlyc1904)](https://github.com/jedichang99)
+[![jedichang99](https://img.shields.io/badge/Github-jedichang99-blue?style=flat&logo=GitHub&link=jedichang99)](https://github.com/jedichang99)
 
 Documentations:
 [![Kimberly Collins](https://img.shields.io/badge/Github-Kimberlyc1904-blue?style=flat&logo=GitHub&link=Kimberlyc1904)](https://github.com/Kimberlyc1904)
