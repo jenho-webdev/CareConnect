@@ -9,10 +9,6 @@ const requestSchema = new Schema({
         type: String,
         required: true
     },
-    type: {
-        type: String,
-        required: true
-    },
     startTime: {
         type: String,
         required: true
