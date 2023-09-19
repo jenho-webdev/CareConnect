@@ -1,6 +1,15 @@
 # CareConnect
 Care Connect - Community Circle
 
+
+## Live Demo
+
+Check out the live demo of the app: [![Heroku App](https://img.shields.io/badge/Heroku-Deployed-blueviolet?logo=heroku)](https://care-connect-378fa5174d96.herokuapp.com/)
+Presentation Slides: [![Here](https://img.shields.io/badge/Google_Slides-Deployed-blueviolet?logo=Google&)](https://docs.google.com/presentation/d/1RjIZjl0G9_lSB3-7fKbuHJAO_isZM33KwT34OEkrZ9s/edit#slide=id.g27caa58f48d_3_959)
+GitHub Repo: [![Github Repo](https://img.shields.io/badge/GitHub_Project_Board-Deployed-blue?logo=github)](https://github.com/jenho-webdev/CareConnect)
+
+# Tech Stack
+
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Apollo-GraphQL](https://img.shields.io/badge/-ApolloGraphQL-311C87?style=for-the-badge&logo=apollo-graphql)
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
@@ -47,6 +56,8 @@ Have a professional README (with unique name, description, technologies used, sc
 ## Table of Contents
 
 - [CareConnect](#careconnect)
+  - [Live Demo](#live-demo)
+- [Tech Stack](#tech-stack)
   - [Description](#description)
   - [User Story](#user-story)
   - [Requirements](#requirements)
@@ -54,7 +65,6 @@ Have a professional README (with unique name, description, technologies used, sc
   - [Wireframes](#wireframes)
   - [Screen Shots](#screen-shots)
   - [Colaborators](#colaborators)
-  - [GitHub/Heroku](#githubheroku)
   - [Sources](#sources)
   - [Key Features](#key-features)
 
@@ -78,19 +88,13 @@ Have a professional README (with unique name, description, technologies used, sc
 
 
 ## Colaborators
-```
-https://github.com/jenho-webdev
-https://github.com/Kimberlyc1904
-https://github.com/jedichang99/
-https://github.com/saduhub
-https://github.com/cwchilvers
 
-```
-## GitHub/Heroku
-```
-https://github.com/jenho-webdev/CareConnect
-https://care-connect-378fa5174d96.herokuapp.com/
-```
+Contributor Profiles:
+[![Chandler Chilvers](https://img.shields.io/badge/Github-cwchilvers-blue?style=flat&logo=GitHub&link=https://github.com/cwchilvers/)](https://github.com/cwchilvers)
+[![Jorge Duarte](https://img.shields.io/badge/Github-saduhub-blue?style=flat&logo=GitHub&link=https://github.com/cwchilvers/)](https://github.com/saduhub)
+[![Jen Ho](https://img.shields.io/badge/Github-jenho--webdev-purple?style=flat&logo=GitHub&link=https://github.com/jenho-webdev)](https://github.com/jenho-webdev)
+[![Kimberly Collins](https://img.shields.io/badge/Github-Kimberlyc1904-blue?style=flat&logo=GitHub&link=Kimberlyc1904)](https://github.com/Kimberlyc1904)
+[![jedichang99](https://img.shields.io/badge/Github-Kimberlyc1904-blue?style=flat&logo=GitHub&link=Kimberlyc1904)](https://github.com/jedichang99)
 
 ## Sources
 ```
@@ -108,4 +112,3 @@ Apollo Docs
 - **Shared Calendar:** A shared calendar enables users to coordinate tasks and appointments efficiently.
 - **Community Posts:** Users can engage in discussions, share resources, and connect with others through community posts.
 - **Privacy and Security:** CareConnect prioritizes user privacy and data security.
-
