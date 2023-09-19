@@ -46,7 +46,6 @@ export const ADD_REQUEST = gql`
   mutation createRequest(
     $requestTitle: String!
     $location: String!
-    $type: String!
     $startTime: String!
     $endTime: String!
     $requestText: String!
@@ -54,7 +53,6 @@ export const ADD_REQUEST = gql`
     createRequest(
       requestTitle: $requestTitle
       location: $location
-      type: $type
       startTime: $startTime
       endTime: $endTime
       requestText: $requestText
@@ -62,7 +60,6 @@ export const ADD_REQUEST = gql`
       _id
       requestTitle
       location
-      type
       createdAt
       startTime
       endTime
@@ -78,15 +75,22 @@ export const ADD_REQUEST = gql`
   }
 `;
 
-export const CANCEL_REQUEST = gql`
-  mutation cancelRequest($requestId: ID!) {
-    cancelRequest(requestId: $requestId) {
+export const UPDATE_REQUEST_STATUS = gql`
+  mutation updateRequestStatus($requestId: ID!, $newStatus: String!) {
+    updateRequestStatus(requestId: $requestId, newStatus: $newStatus) {
       _id
-      status
+      endTime
+      location
       owner {
         _id
       }
+      participants {
+        _id
+      }
+      requestText
       requestTitle
+      startTime
+      status
     }
   }
 `;
