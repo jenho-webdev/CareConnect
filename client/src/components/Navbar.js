@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const logout = (event) => {
-    event.preventDefault();
     Auth.logout();
   };
 
@@ -20,7 +19,7 @@ export default function Navbar() {
           </Link>
           <Link
             className="btn btn-lg btn-primary m-2"
-            to="/signin"
+            to="/login"
             onClick={logout}
           >
             Logout
