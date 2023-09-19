@@ -1,6 +1,6 @@
 # CareConnect
-Care Connect - Community Circle
 
+Care Connect - Community Circle
 
 ## Live Demo
 
@@ -10,7 +10,7 @@ Presentation Slides: [![Here](https://img.shields.io/badge/Google_Slides-Deploye
 <br>
 GitHub Repo: [![Github Repo](https://img.shields.io/badge/GitHub_Project_Board-Deployed-blue?logo=github)](https://github.com/jenho-webdev/CareConnect)
 
-# Tech Stack
+## Tech Stack
 
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Apollo-GraphQL](https://img.shields.io/badge/-ApolloGraphQL-311C87?style=for-the-badge&logo=apollo-graphql)
@@ -23,6 +23,22 @@ GitHub Repo: [![Github Repo](https://img.shields.io/badge/GitHub_Project_Board-D
 ![NEXTUI](https://img.shields.io/badge/NEXTUI-black?style=for-the-badge&logo=JSON%20web%20tokens)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
+## Table of Contents
+
+- [CareConnect](#careconnect)
+  - [Live Demo](#live-demo)
+  - [Tech Stack](#tech-stack)
+  - [Table of Contents](#table-of-contents)
+  - [Description](#description)
+  - [User Story](#user-story)
+  - [Requirements](#requirements)
+  - [Key Features](#key-features)
+  - [Wireframes](#wireframes)
+  - [Screen Shots](#screen-shots)
+  - [Collaborators](#collaborators)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Disclaimer](#disclaimer)
 
 ## Description
 
@@ -37,6 +53,7 @@ CareConnect is a dedicated community-based application designed to bridge the ga
 - What did you learn? Projects like CareConnect are motivated by a desire to strengthen communities, empower individuals, and address specific challenges related to accessibility and support. Through these initiatives, valuable insights are gained about community dynamics, user-centered design, and the power of technology to facilitate local connections and assistance.
   
 ## User Story
+
 ```
 AS a member of the Care Connect Community Circle, 
 I WANT to use the app to connect with fellow caregivers and individuals in similar caregiving situations 
@@ -44,6 +61,7 @@ SO THAT they can share experiences, exchange advice, and offer support.
 ```
 
 ## Requirements
+
 ```
 Use React for the front end.
 Use GraphQL with a Node.js and Express.js server.
@@ -59,20 +77,14 @@ Have a clean repository that meets quality coding standards (file structure, nam
 Have a professional README (with unique name, description, technologies used, screenshot, and link to deployed application).
 ```
 
-## Table of Contents
 
-- [CareConnect](#careconnect)
-  - [Live Demo](#live-demo)
-- [Tech Stack](#tech-stack)
-  - [Description](#description)
-  - [User Story](#user-story)
-  - [Requirements](#requirements)
-  - [Table of Contents](#table-of-contents)
-  - [Wireframes](#wireframes)
-  - [Screen Shots](#screen-shots)
-  - [Colaborators](#colaborators)
-  - [Sources](#sources)
-  - [Key Features](#key-features)
+## Key Features
+
+- **Request Assistance:** Users can request specific types of help, such as rides, meal deliveries, or tech support.
+- **Offer Assistance:** Individuals can volunteer their time and skills to assist others in their community.
+- **Shared Calendar:** A shared calendar enables users to coordinate tasks and appointments efficiently.
+- **Community Posts:** Users can engage in discussions, share resources, and connect with others through community posts.
+- **Privacy and Security:** CareConnect prioritizes user privacy and data security.
 
 ## Wireframes
 
@@ -96,7 +108,7 @@ Have a professional README (with unique name, description, technologies used, sc
 ![alt text](assets/images/install_local.png)
 ![alt text](assets/images/PWA_logo.png)
 
-## Colaborators
+## Collaborators
 
 Contributor Profiles:
 
@@ -114,20 +126,22 @@ Features and API research:
 Documentations:
 [![Kimberly Collins](https://img.shields.io/badge/Github-Kimberlyc1904-blue?style=flat&logo=GitHub&link=Kimberlyc1904)](https://github.com/Kimberlyc1904)
 
+## Contributing
 
-## Sources
-```
-ChatGPT
-W3 Schools
-Google
-Stack Overflow
-Apollo Docs
-```
+Contributions are welcome! If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
 
-## Key Features
+## License
 
-- **Request Assistance:** Users can request specific types of help, such as rides, meal deliveries, or tech support.
-- **Offer Assistance:** Individuals can volunteer their time and skills to assist others in their community.
-- **Shared Calendar:** A shared calendar enables users to coordinate tasks and appointments efficiently.
-- **Community Posts:** Users can engage in discussions, share resources, and connect with others through community posts.
-- **Privacy and Security:** CareConnect prioritizes user privacy and data security.
+This project is licensed under the MIT License.
+
+## Disclaimer
+
+This web app is for educational and demonstration purposes only. The app may collect and store user information such as usernames, passwords, and other data for authentication and user account management purposes.
+
+Please note that this project may not have undergone a thorough security audit and is not intended for production use without further review and enhancement of security measures.
+
+The creators and contributors of this project are not liable for any damages, data breaches, or misuse of information that may arise from the use of this web app.
+
+It is the responsibility of the deployer and users of this app to ensure proper security measures are implemented and that sensitive information is handled securely.
+
+Always exercise caution when using this or any other web application that involves personal or sensitive data.
