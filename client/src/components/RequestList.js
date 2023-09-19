@@ -15,10 +15,11 @@ import {
 import { EyeIcon } from "../assets/icons/EyeIcon";
 
 const statusColorMap = {
-  accepted: "success", //someone signed up for the request
-  expired: "danger", //no one signed up for the request AND the request has passed
+  Open: "success", //no one signed up for the request
+  Available: "success", //someone signed up for the request
+  closed: "danger", //no one signed up for the request AND the request has passed
   pending: "warning", //no one signed up for the request AND the request has not passed
-  completed: "secondary", //the request has passed AND the request has been marked as completed
+  Closed: "secondary", //the request has passed AND the request has been marked as completed
 };
 
 const columns = [

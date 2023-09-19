@@ -12,8 +12,11 @@ export default function Navbar() {
     <div>
       {Auth.loggedIn() ? (
         <>
-          <Link className="btn btn-lg btn-primary m-2" to="/me">
+          <Link className="btn btn-lg btn-primary m-2" to="/dashboard">
             My Profile
+          </Link>
+          <Link className="btn btn-lg btn-primary m-2" to="/createrequest">
+            Create Request
           </Link>
           <Link
             className="btn btn-lg btn-primary m-2"
