@@ -64,13 +64,13 @@ export default function LoginForm() {
   };
 
   return (
-    <div className=" flex-wrap my-1">
+    <div className=" flex-wrap">
       {data ? (
         <p>Success! Redirecting to dashboard.</p>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <div className="flex-row space-between my-2">
-            <h2 className="text-2xl font-bold">Sign In</h2>
+        <form className="w-full max-w-xs" onSubmit={handleSubmit}>
+          <div className="flex-row space-between m-2">
+            <h2 className="text-2xl font-bold text-white">Sign In</h2>
           </div>
           <div className="flex-row space-between my-2">
             <Input
@@ -80,7 +80,7 @@ export default function LoginForm() {
               label="Email"
               placeholder="john.doe@gmail.com"
               id="email"
-              className="max-w-xs shadow-lg"
+              className="w-full p-2 rounded focus:outline-none focus:ring focus:border-blue-300"
               onChange={handleChange}
             />
           </div>
@@ -92,7 +92,7 @@ export default function LoginForm() {
               type="password"
               label="Password"
               id="pwd"
-              className="max-w-xs shadow-lg"
+              className="w-full p-2 rounded focus:outline-none focus:ring focus:border-blue-300"
               onChange={handleChange}
               onClear={() => console.log("input cleared")}
             />
