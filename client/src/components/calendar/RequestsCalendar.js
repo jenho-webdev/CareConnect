@@ -58,7 +58,7 @@ export default function RequestsCalendar({ events }) {
   // Define the views you want to display in the calendar
   const availableViews = {
     month: true,
-    week: false,
+    week: true,
     day: true,
     agenda: false,
   };
