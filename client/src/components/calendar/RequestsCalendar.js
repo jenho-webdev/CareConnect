@@ -58,12 +58,16 @@ export default function RequestsCalendar({ events }) {
   // Define the views you want to display in the calendar
   const availableViews = {
     month: true,
-    week: true,
+    week: false,
     day: true,
+    agenda: false,
   };
 
   return (
     <div className="calendar shadow">
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-whit">
+        Requests Calendar
+      </h1>
       <Calendar
         localizer={localizer}
         defaultDate={new Date()}
