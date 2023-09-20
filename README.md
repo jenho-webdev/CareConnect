@@ -7,6 +7,7 @@ Care Connect - Community Circle
 Demo account: 
 <br>
 email: "john.doe@example.com"
+<br>
 password: "johnpassword123"
 
 
