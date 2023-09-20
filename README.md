@@ -4,6 +4,12 @@ Care Connect - Community Circle
 
 ## Live Demo
 
+Demo account: 
+<br>
+email: "john.doe@example.com"
+password: "johnpassword123"
+
+
 Check out the live demo of the app: [![Heroku App](https://img.shields.io/badge/Heroku-Deployed-blueviolet?logo=heroku)](https://care-connect-378fa5174d96.herokuapp.com/)
 <br>
 Presentation Slides: [![Here](https://img.shields.io/badge/Google_Slides-Deployed-blueviolet?logo=Google&)](https://docs.google.com/presentation/d/1RjIZjl0G9_lSB3-7fKbuHJAO_isZM33KwT34OEkrZ9s/edit#slide=id.g27caa58f48d_3_959)
