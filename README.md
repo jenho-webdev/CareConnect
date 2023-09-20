@@ -132,7 +132,6 @@ Features and API research:
 Documentations:
 [![Kimberly Collins](https://img.shields.io/badge/Github-Kimberlyc1904-blue?style=flat&logo=GitHub&link=Kimberlyc1904)](https://github.com/Kimberlyc1904)
 
-
 ## Contributing
 
 Contributions are welcome! If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
